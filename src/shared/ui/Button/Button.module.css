@@ -1,0 +1,22 @@
+.root {
+  height: 40px;
+  padding: 9px 30px;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: var(--border-r-m);
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  transition: background 0.15s ease-in;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background-color: var(--color-accent-dark);
+  }
+}
