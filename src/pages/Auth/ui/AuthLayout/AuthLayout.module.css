@@ -1,0 +1,47 @@
+.root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  max-width: 440px;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--foreground);
+  border-radius: var(--border-r-lg);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link {
+  color: var(--color-gray-light);
+  font-size: 14px;
+}
+
+.link a {
+  text-decoration: underline;
+  color: var(--color-accent);
+  transition: color 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .link a:hover {
+    color: var(--color-accent-dark);
+  }
+}

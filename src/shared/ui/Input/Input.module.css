@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  height: 40px;
+  padding: 9px 14px;
+  background: var(--content-background);
+  border-radius: var(--border-r-m);
+  border: 1px solid transparent;
+  outline: none;
+  transition: border 0.15s ease-in;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.input::placeholder {
+  color: var(--color-gray-light);
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:focus {
+  transition:
+    background-color ease,
+    color ease;
+  transition-delay: 1000s;
+}
+/* .input[data-autocompleted] {
+  background-color: transparent !important;
+} */
+
+.inputError,
+.inputError:focus {
+  border-color: var(--color-red);
+}
+
+.error {
+  padding-left: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
