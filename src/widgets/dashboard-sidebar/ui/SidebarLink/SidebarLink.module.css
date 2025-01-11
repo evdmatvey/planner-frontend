@@ -1,0 +1,25 @@
+.root {
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background 0.15s ease-in-out;
+}
+
+.root svg path {
+  fill: var(--color-gray);
+}
+
+@media (hover: hover) {
+  .root:hover {
+    background: var(--content-background);
+  }
+}
+
+.active {
+  color: var(--text-light);
+  background: var(--content-background);
+}
