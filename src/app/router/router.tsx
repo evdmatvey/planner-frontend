@@ -4,6 +4,8 @@ import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
 import { Tasks } from '@/pages/Tasks';
 import { routesConfig } from '@/shared/config/routes';
+import { ProtectedRoute } from './ProtectedRoute';
+import { PublicOnlyRoute } from './PublicOnlyRoute';
 
 export const router = createBrowserRouter([
   {
@@ -12,14 +14,26 @@ export const router = createBrowserRouter([
   },
   {
     path: routesConfig.LOGIN,
-    element: <Login />,
+    element: (
+      <PublicOnlyRoute>
+        <Login />
+      </PublicOnlyRoute>
+    ),
   },
   {
     path: routesConfig.REGISTER,
-    element: <Register />,
+    element: (
+      <PublicOnlyRoute>
+        <Register />
+      </PublicOnlyRoute>
+    ),
   },
   {
     path: routesConfig.TASKS,
-    element: <Tasks />,
+    element: (
+      <ProtectedRoute>
+        <Tasks />
+      </ProtectedRoute>
+    ),
   },
 ]);
