@@ -3,7 +3,9 @@ import { Login } from '@/pages/Auth';
 import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
 import { Tasks } from '@/pages/Tasks';
+import { DashboardSidebar } from '@/widgets/dashboard-sidebar';
 import { routesConfig } from '@/shared/config/routes';
+import { DashboardLayout } from '@/shared/ui/DashboardLayout';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicOnlyRoute } from './PublicOnlyRoute';
 
@@ -29,11 +31,17 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: routesConfig.TASKS,
+    path: routesConfig.DASHBOARD,
     element: (
       <ProtectedRoute>
-        <Tasks />
+        <DashboardLayout sidebarSlot={<DashboardSidebar />} />
       </ProtectedRoute>
     ),
+    children: [
+      {
+        path: routesConfig.TASKS,
+        element: <Tasks />,
+      },
+    ],
   },
 ]);
