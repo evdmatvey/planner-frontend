@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.root img {
+  width: 50px;
+}
+
+.root.collapsed img {
+  width: 40px;
+}
