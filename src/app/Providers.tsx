@@ -4,7 +4,9 @@ import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router';
 import { router } from './router/router';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { refetchOnWindowFocus: false } },
+});
 
 export const Providers = () => {
   return (
