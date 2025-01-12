@@ -1,4 +1,5 @@
-import axios, { type CreateAxiosDefaults } from 'axios';
+import axios, { AxiosError, type CreateAxiosDefaults } from 'axios';
+import { routesConfig } from '@/shared/config/routes';
 import { AccessTokenStorage } from './access-token-storage';
 import { errorCatch } from './error-catch';
 import { tokenService } from './token.service';
@@ -43,9 +44,12 @@ requesterWithAuth.interceptors.response.use(
           AccessTokenStorage.saveToken(response.data.accessToken);
 
         return requesterWithAuth.request(originalRequest);
-      } catch (error) {
-        if (errorCatch(error) === 'jwt expired')
-          AccessTokenStorage.removeToken();
+      } catch (e) {
+        if (e instanceof AxiosError)
+          if (e.status === 401) {
+            AccessTokenStorage.removeToken();
+            window.location.href = routesConfig.LOGIN;
+          }
       }
     }
 
