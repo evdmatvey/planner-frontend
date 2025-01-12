@@ -1,0 +1,12 @@
+.title {
+  margin-bottom: 20px;
+  color: var(--text-light);
+  font-size: 28px;
+}
+
+.form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
