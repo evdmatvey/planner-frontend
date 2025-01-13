@@ -1,0 +1,45 @@
+.root {
+  position: relative;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-accent);
+  background: var(--foreground);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.arrow svg path {
+  fill: var(--color-gray);
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.15s ease-in;
+}
+
+.root.open .arrow {
+  transform: rotate(180deg);
+}
