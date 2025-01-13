@@ -17,7 +17,7 @@ export const Providers = () => {
             position: 'top-right',
             style: {
               color: 'var(--text)',
-              background: 'var(--toast-background)',
+              background: 'var(--popup-background)',
             },
           }}
         />
