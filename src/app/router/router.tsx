@@ -2,7 +2,9 @@ import { createBrowserRouter } from 'react-router';
 import { Login } from '@/pages/Auth';
 import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
+import { Settings } from '@/pages/Settings';
 import { Tasks } from '@/pages/Tasks';
+import { DashboardProfile } from '@/widgets/dashboard-profile';
 import { DashboardSidebar } from '@/widgets/dashboard-sidebar';
 import { routesConfig } from '@/shared/config/routes';
 import { DashboardLayout } from '@/shared/ui/DashboardLayout';
@@ -34,13 +36,20 @@ export const router = createBrowserRouter([
     path: routesConfig.DASHBOARD,
     element: (
       <ProtectedRoute>
-        <DashboardLayout sidebarSlot={<DashboardSidebar />} />
+        <DashboardLayout
+          sidebarSlot={<DashboardSidebar />}
+          profileSlot={<DashboardProfile />}
+        />
       </ProtectedRoute>
     ),
     children: [
       {
         path: routesConfig.TASKS,
         element: <Tasks />,
+      },
+      {
+        path: routesConfig.SETTINGS,
+        element: <Settings />,
       },
     ],
   },

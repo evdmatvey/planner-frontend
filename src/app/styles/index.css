@@ -4,7 +4,7 @@
   --background: #1f1d24;
   --foreground: #2b2931;
   --content-background: #35333a;
-  --toast-background: #29272d;
+  --popup-background: #29272d;
 
   --border-color: #514a61;
 
@@ -27,6 +27,7 @@
   --text: #cfcfcf;
 
   --border-r-xs: 3px;
+  --border-r-s: 6px;
   --border-r-m: 8px;
   --border-r-lg: 12px;
 
