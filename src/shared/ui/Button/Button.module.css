@@ -1,22 +1,68 @@
 .root {
-  height: 40px;
-  padding: 9px 30px;
   font-weight: 500;
-  font-size: 16px;
-  border-radius: var(--border-r-m);
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   color: var(--text-light);
-  transition: background 0.15s ease-in;
+  transition: all 0.15s ease-in;
   cursor: pointer;
 }
 
-.primary {
+.medium {
+  height: 40px;
+  padding: 9px 30px;
+  border-radius: var(--border-r-m);
+  font-size: 16px;
+}
+
+.small {
+  height: 30px;
+  padding: 5px 20px;
+  border-radius: var(--border-r-s);
+  font-size: 14px;
+}
+
+.solid {
+  border-color: transparent;
+}
+
+.bordered {
+  background-color: transparent;
+}
+
+.solid.primary {
   background-color: var(--color-accent);
 }
 
+.bordered.primary {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.solid.secondary {
+  background-color: var(--color-gray);
+}
+
+.bordered.secondary {
+  border-color: var(--color-gray);
+  color: var(--color-gray);
+}
+
 @media (hover: hover) {
-  .primary:hover {
+  .solid.primary:hover {
     background-color: var(--color-accent-dark);
+  }
+
+  .bordered.primary:hover {
+    border-color: var(--color-accent-dark);
+    color: var(--color-accent-dark);
+  }
+
+  .solid.secondary:hover {
+    background-color: var(--color-gray-light);
+  }
+
+  .bordered.secondary:hover {
+    border-color: var(--color-gray-light);
+    color: var(--color-gray-light);
   }
 }
