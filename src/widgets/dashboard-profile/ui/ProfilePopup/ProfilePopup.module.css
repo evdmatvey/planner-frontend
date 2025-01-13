@@ -1,0 +1,12 @@
+.root {
+  width: 160px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 46px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-r-xs);
+  background: var(--popup-background);
+  z-index: 10;
+}
