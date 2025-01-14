@@ -33,11 +33,8 @@ const isOnThisWeek = (createdAt: string) =>
 const isLater = (createdAt: string) =>
   dayjs(createdAt).isSameOrAfter(referenceDateForValue.later);
 
-export const filterTasksByGroup = (tasks: Task[], value: TaskGroupValue) => {
-  const filterCallbackForGroup: Record<
-    TaskGroupValue,
-    (task: Task) => boolean
-  > = {
+const filterCallbackForGroup: Record<TaskGroupValue, (task: Task) => boolean> =
+  {
     completed: (task) => task.isCompleted,
     today: (task) => isToday(task.createdAt) && !task.isCompleted,
     tomorrow: (task) => isTomorrow(task.createdAt) && !task.isCompleted,
@@ -49,5 +46,5 @@ export const filterTasksByGroup = (tasks: Task[], value: TaskGroupValue) => {
     later: (task) => isLater(task.createdAt) && !task.isCompleted,
   };
 
-  return tasks.filter(filterCallbackForGroup[value]);
-};
+export const filterTasksByGroup = (tasks: Task[], value: TaskGroupValue) =>
+  tasks.filter(filterCallbackForGroup[value]);
