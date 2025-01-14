@@ -1,16 +1,7 @@
-export enum TagColor {
-  ACCENT = 'ACCENT',
-  ORANGE = 'ORANGE',
-  RED = 'RED',
-  PINK = 'PINK',
-  BLUE = 'BLUE',
-  SKY_BLUE = 'SKY_BLUE',
-  GREEN = 'GREEN',
-  YELLOW = 'YELLOW',
-}
+import { Color } from '@/shared/model/color.types';
 
 export interface Tag {
   id: string;
   title: string;
-  color: TagColor;
+  color: keyof typeof Color;
 }

@@ -1,6 +1,6 @@
-import { TagColor } from '../../model/tag.types';
+import { Color } from '@/shared/model/color.types';
 
 export interface CreateTagDto {
   title: string;
-  color?: TagColor;
+  color?: keyof typeof Color;
 }
