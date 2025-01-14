@@ -4,3 +4,4 @@ export * from './api/dto/tag.response';
 export * from './model/tag.types';
 export * from './api/tag.queries';
 export * from './api/tag.service';
+export * from './ui/TagBadge';
