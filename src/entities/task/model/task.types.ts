@@ -9,11 +9,11 @@ export enum TaskPriority {
 export interface Task {
   id: string;
   title: string;
+  createdAt: string;
+  updatedAt: string;
+  isCompleted: boolean;
+  tags: Tag[];
   description?: string;
   priority?: TaskPriority;
   executionTime?: number;
-  isCompleted?: boolean;
-  createdAt?: string;
-  updatedAt?: string;
-  tags: Tag[];
 }
