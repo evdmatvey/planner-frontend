@@ -1,0 +1,38 @@
+.root {
+  width: 100%;
+  padding: 0 20px 10px 20px;
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.root button {
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-gray);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+}
+
+.root button.active {
+  color: var(--text);
+}
+
+.root button.active::after {
+  width: 100%;
+  height: 1px;
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  background: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .root button:hover {
+    color: var(--text);
+  }
+}
