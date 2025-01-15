@@ -10,9 +10,9 @@ export interface Task {
   id: string;
   title: string;
   createdAt: string;
-  updatedAt: string;
   isCompleted: boolean;
   tags: Tag[];
+  updatedAt?: string;
   description?: string;
   priority?: TaskPriority;
   executionTime?: number;
