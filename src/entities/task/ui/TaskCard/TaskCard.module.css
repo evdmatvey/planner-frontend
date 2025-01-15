@@ -1,0 +1,40 @@
+.root {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: var(--border-r-m);
+  background: var(--content-background);
+}
+
+.title {
+  color: var(--text-light);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.text {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.description {
+  line-height: 1.1;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
