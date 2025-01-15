@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-gray);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.root svg {
+  width: 20px;
+  height: 20px;
+}
+
+.root svg path {
+  fill: var(--color-gray);
+}
