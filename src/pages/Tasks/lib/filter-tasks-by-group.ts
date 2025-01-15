@@ -11,7 +11,7 @@ dayjs.extend(isoWeek);
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
-const referenceDateForValue: Omit<
+export const referenceDateForValue: Omit<
   Record<TaskGroupValue, Dayjs>,
   'completed'
 > = {
