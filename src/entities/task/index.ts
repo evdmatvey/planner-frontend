@@ -5,3 +5,5 @@ export * from './model/task.types';
 export * from './api/task.queries';
 export * from './api/task.service';
 export * from './ui/TaskCard';
+export * from './ui/SelectTaskPriority';
+export * from './ui/TaskModal';

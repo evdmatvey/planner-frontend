@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { CreateTaskDto, taskQueries, taskService } from '@/entities/task';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
 import { toastifyError } from '@/shared/lib/toastify-error';
+import { cleanDto } from '../lib/clean-dto';
 
 export const useCreateTask = (successCallback: () => void) => {
   const queryClient = useQueryClient();
@@ -20,5 +21,16 @@ export const useCreateTask = (successCallback: () => void) => {
     },
   });
 
-  return { mutate };
+  const createTaskHandler = (dto: CreateTaskDto) => {
+    const cleanedDto = cleanDto(dto);
+
+    if (!cleanedDto.title) {
+      toast.error('Укажите название задачи!');
+      return;
+    }
+
+    mutate(cleanedDto as CreateTaskDto);
+  };
+
+  return { createTaskHandler };
 };

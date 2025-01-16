@@ -1,15 +1,10 @@
 import dayjs from 'dayjs';
-import { m } from 'framer-motion';
 import { Controller, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { SelectOrCreateTagPopup } from '@/entities/tag';
-import { CreateTaskDto } from '@/entities/task';
-import { SelectTaskPriority } from '@/entities/task/ui/SelectTaskPriority';
+import { CreateTaskDto, SelectTaskPriority, TaskModal } from '@/entities/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
-import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
-import { cleanDto } from '../../lib/clean-dto';
 import { useCreateTask } from '../../model/useCreateTask';
 import styles from './AddTaskModal.module.css';
 
@@ -28,33 +23,14 @@ export const AddTaskModal = ({
       createdAt: referenceDate,
     },
   });
-  const { mutate } = useCreateTask(() => {
+
+  const { createTaskHandler } = useCreateTask(() => {
     reset();
     closeModalHandler();
   });
 
-  const createTaskHandler = (dto: CreateTaskDto) => {
-    const cleanedDto = cleanDto(dto);
-
-    if (!cleanedDto.title) {
-      toast.error('Укажите название задачи!');
-      return;
-    }
-
-    mutate(cleanedDto as CreateTaskDto);
-  };
-
   return (
-    <m.div
-      className={styles.root}
-      initial={{ width: 200, opacity: 0 }}
-      animate={{ width: 450, opacity: 1 }}
-      exit={{ width: 200, opacity: 0 }}
-    >
-      <button className={styles.close} onClick={closeModalHandler}>
-        <CloseIcon />
-      </button>
-      <h3 className={styles.title}>Создание задачи</h3>
+    <TaskModal title="Создание задачи" closeModalHandler={closeModalHandler}>
       <form className={styles.form} onSubmit={handleSubmit(createTaskHandler)}>
         <TransparentInput
           {...register('title')}
@@ -97,6 +73,6 @@ export const AddTaskModal = ({
           Создать
         </Button>
       </form>
-    </m.div>
+    </TaskModal>
   );
 };
