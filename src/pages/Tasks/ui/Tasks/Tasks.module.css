@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  color: var(--text-light);
+  font-size: 24px;
+  font-weight: 700;
+}
