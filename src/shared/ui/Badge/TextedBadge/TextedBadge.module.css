@@ -1,0 +1,48 @@
+.root {
+  width: fit-content;
+  padding: 3px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--border-r-xs);
+}
+
+.info {
+  color: var(--color-gray);
+  background: var(--content-background);
+}
+
+.color {
+  color: var(--text-light);
+}
+
+.color.accent {
+  background: var(--color-accent);
+}
+
+.color.red {
+  background: var(--color-red);
+}
+
+.color.orange {
+  background: var(--color-orange);
+}
+
+.color.yellow {
+  background: var(--color-yellow);
+}
+
+.color.green {
+  background: var(--color-green);
+}
+
+.color.blue {
+  background: var(--color-blue);
+}
+
+.color.pink {
+  background: var(--color-pink);
+}
+
+.color.sky_blue {
+  background: var(--color-sky-blue);
+}

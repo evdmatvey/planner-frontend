@@ -28,7 +28,12 @@ export const SidebarMenu = () => {
     <nav>
       <ul className={styles.root}>
         {sidebarMenuLinks.map((link) => (
-          <SidebarLink children={link.text} icon={link.icon} to={link.to} />
+          <SidebarLink
+            key={link.to}
+            children={link.text}
+            icon={link.icon}
+            to={link.to}
+          />
         ))}
       </ul>
     </nav>

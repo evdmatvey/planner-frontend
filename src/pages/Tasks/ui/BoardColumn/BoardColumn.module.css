@@ -1,0 +1,49 @@
+.root {
+  width: 257px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.add {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.add svg path {
+  fill: var(--color-gray);
+  transition: fill 0.15s ease-in;
+}
+
+.content {
+  min-height: 300px;
+  padding: 10px;
+  background: var(--foreground);
+  border-radius: var(--border-r-lg);
+}
+
+.cards {
+  padding-right: 7px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (hover: hover) {
+  .add:hover svg path {
+    fill: var(--color-gray-light);
+  }
+}

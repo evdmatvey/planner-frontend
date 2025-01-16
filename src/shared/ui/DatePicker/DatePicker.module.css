@@ -1,0 +1,41 @@
+.root {
+  position: relative;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gray-light);
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  transition: color 0.15s ease-in;
+  cursor: pointer;
+}
+
+.title svg path {
+  fill: var(--color-gray-light);
+  transition: fill 0.15s ease-in;
+}
+
+.picker {
+  padding: 5px 10px;
+  position: absolute;
+  left: -1px;
+  top: 29px;
+  background: var(--content-background);
+  border-radius: var(--border-r-m);
+  z-index: 10;
+}
+
+@media (hover: hover) {
+  .title:hover {
+    color: var(--text);
+  }
+
+  .title:hover svg path {
+    fill: var(--text);
+  }
+}

@@ -1,0 +1,37 @@
+.root {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+}
+
+.accent {
+  background: var(--color-accent);
+}
+
+.red {
+  background: var(--color-red);
+}
+
+.orange {
+  background: var(--color-orange);
+}
+
+.yellow {
+  background: var(--color-yellow);
+}
+
+.green {
+  background: var(--color-green);
+}
+
+.blue {
+  background: var(--color-blue);
+}
+
+.pink {
+  background: var(--color-pink);
+}
+
+.sky_blue {
+  background: var(--color-sky-blue);
+}

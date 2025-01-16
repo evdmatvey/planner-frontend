@@ -46,7 +46,7 @@ requesterWithAuth.interceptors.response.use(
         return requesterWithAuth.request(originalRequest);
       } catch (e) {
         if (e instanceof AxiosError)
-          if (e.status === 401) {
+          if (e.status === 401 || e.status === 404) {
             AccessTokenStorage.removeToken();
             window.location.href = routesConfig.LOGIN;
           }
