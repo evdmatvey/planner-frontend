@@ -35,10 +35,10 @@ export const DatePicker = ({ date, onChange }: DatePickerProps) => {
 
   return (
     <div className={styles.root} ref={ref}>
-      <button className={styles.title} onClick={togglePopupHandler}>
+      <div className={styles.title} onClick={togglePopupHandler}>
         <ClockIcon />
         {date}
-      </button>
+      </div>
       {isOpen && (
         <div className={styles.picker}>
           <DayPicker

@@ -23,8 +23,11 @@
 .picker {
   padding: 5px 10px;
   position: absolute;
+  left: -1px;
+  top: 29px;
   background: var(--content-background);
   border-radius: var(--border-r-m);
+  z-index: 10;
 }
 
 @media (hover: hover) {
