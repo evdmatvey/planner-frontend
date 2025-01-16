@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { m } from 'framer-motion';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { SelectOrCreateTagPopup } from '@/entities/tag';
 import { CreateTaskDto } from '@/entities/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
@@ -10,7 +11,6 @@ import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { cleanDto } from '../../lib/clean-dto';
 import { useCreateTask } from '../../model/useCreateTask';
 import { AddTaskModalPriority } from '../AddTaskModalPriority';
-import { AddTaskModalTags } from '../AddTaskModalTags';
 import styles from './AddTaskModal.module.css';
 
 interface AddTaskModalProps {
@@ -80,7 +80,10 @@ export const AddTaskModal = ({
           control={control}
           name="tags"
           render={({ field: { value, onChange } }) => (
-            <AddTaskModalTags defaultTags={value ?? []} onChange={onChange} />
+            <SelectOrCreateTagPopup
+              defaultTags={value ?? []}
+              onChange={onChange}
+            />
           )}
         />
         <Controller

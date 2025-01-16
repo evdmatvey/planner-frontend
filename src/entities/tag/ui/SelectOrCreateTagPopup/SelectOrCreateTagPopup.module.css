@@ -1,10 +1,4 @@
 .root {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.heading {
   position: relative;
   display: flex;
   align-items: center;
@@ -49,7 +43,6 @@
   flex-wrap: wrap;
 }
 
-.selected_tag,
 .tag {
   cursor: pointer;
 }
