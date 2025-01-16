@@ -78,3 +78,8 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-gray-light);
 }
+
+.rdp-root {
+  --rdp-accent-color: #7f55d6;
+  font-size: 85%;
+}
