@@ -4,13 +4,13 @@ import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { SelectOrCreateTagPopup } from '@/entities/tag';
 import { CreateTaskDto } from '@/entities/task';
+import { SelectTaskPriority } from '@/entities/task/ui/SelectTaskPriority';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { cleanDto } from '../../lib/clean-dto';
 import { useCreateTask } from '../../model/useCreateTask';
-import { AddTaskModalPriority } from '../AddTaskModalPriority';
 import styles from './AddTaskModal.module.css';
 
 interface AddTaskModalProps {
@@ -90,7 +90,7 @@ export const AddTaskModal = ({
           control={control}
           name="priority"
           render={({ field: { value, onChange } }) => (
-            <AddTaskModalPriority priority={value} onChange={onChange} />
+            <SelectTaskPriority defaultPriority={value} onChange={onChange} />
           )}
         />
         <Button variant="bordered" size="small">
