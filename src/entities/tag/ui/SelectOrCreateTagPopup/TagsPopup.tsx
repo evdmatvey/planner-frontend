@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { AnimatePresence, m } from 'framer-motion';
 import { type RefObject, forwardRef } from 'react';
 import { usePopup } from '@/shared/lib/usePopup';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
@@ -27,17 +28,24 @@ export const TagsPopup = forwardRef<HTMLElement, TagsPopupProps>(
         >
           <PlusIcon />
         </button>
-        {isOpen && (
-          <div className={styles.popup}>
-            {tags?.map((tag) => (
-              <TagBadge
-                key={tag.id}
-                tag={tag}
-                onClick={() => addTagHandler(tag)}
-              />
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <m.div
+              className={styles.popup}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+            >
+              {tags?.map((tag) => (
+                <TagBadge
+                  key={tag.id}
+                  tag={tag}
+                  onClick={() => addTagHandler(tag)}
+                />
+              ))}
+            </m.div>
+          )}
+        </AnimatePresence>
       </>
     );
   },
