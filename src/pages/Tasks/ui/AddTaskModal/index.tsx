@@ -1,11 +1,15 @@
 import dayjs from 'dayjs';
 import { m } from 'framer-motion';
 import { Controller, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { CreateTaskDto } from '@/entities/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
+import { cleanDto } from '../../lib/clean-dto';
+import { useCreateTask } from '../../model/useCreateTask';
+import { AddTaskModalPriority } from '../AddTaskModalPriority';
 import { AddTaskModalTags } from '../AddTaskModalTags';
 import styles from './AddTaskModal.module.css';
 
@@ -18,15 +22,26 @@ export const AddTaskModal = ({
   referenceDate,
   closeModalHandler,
 }: AddTaskModalProps) => {
-  const { control, register, handleSubmit } = useForm<CreateTaskDto>({
+  const { control, register, reset, handleSubmit } = useForm<CreateTaskDto>({
     defaultValues: {
       tags: [],
       createdAt: referenceDate,
     },
   });
+  const { mutate } = useCreateTask(() => {
+    reset();
+    closeModalHandler();
+  });
 
   const createTaskHandler = (dto: CreateTaskDto) => {
-    console.log(dto);
+    const cleanedDto = cleanDto(dto);
+
+    if (!cleanedDto.title) {
+      toast.error('Укажите название задачи!');
+      return;
+    }
+
+    mutate(cleanedDto as CreateTaskDto);
   };
 
   return (
@@ -66,6 +81,13 @@ export const AddTaskModal = ({
           name="tags"
           render={({ field: { value, onChange } }) => (
             <AddTaskModalTags defaultTags={value ?? []} onChange={onChange} />
+          )}
+        />
+        <Controller
+          control={control}
+          name="priority"
+          render={({ field: { value, onChange } }) => (
+            <AddTaskModalPriority priority={value} onChange={onChange} />
           )}
         />
         <Button variant="bordered" size="small">

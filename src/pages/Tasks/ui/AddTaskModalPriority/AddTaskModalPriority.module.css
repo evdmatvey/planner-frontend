@@ -1,0 +1,29 @@
+.root {
+  position: relative;
+}
+
+.heading {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.priorities {
+  width: 100px;
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--content-background);
+  border-radius: var(--border-r-m);
+}
+
+.priority {
+  cursor: pointer;
+}

@@ -39,6 +39,7 @@
   flex-wrap: wrap;
   background: var(--content-background);
   border-radius: var(--border-r-m);
+  z-index: 10;
 }
 
 .tags {

@@ -55,7 +55,11 @@ export const AddTaskModalTags = ({
             <div className={styles.title}>Выберите теги</div>
           )}
         </div>
-        <button className={styles.add_button} onClick={togglePopupHandler}>
+        <button
+          type="button"
+          className={styles.add_button}
+          onClick={togglePopupHandler}
+        >
           <PlusIcon />
         </button>
         {isOpen && (
