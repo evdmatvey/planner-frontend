@@ -38,7 +38,23 @@ export const AddTaskModalTags = ({
   return (
     <div className={styles.root}>
       <div className={styles.heading} ref={ref}>
-        <h6 className={styles.title}>Тэги:</h6>
+        <div className={styles.content}>
+          {selectedTags.length !== 0 ? (
+            <ul className={styles.tags}>
+              {selectedTags.map((tag) => (
+                <div
+                  key={tag.id}
+                  className={styles.selected_tag}
+                  onClick={() => removeTagHandler(tag.id)}
+                >
+                  <TagBadge tag={tag} />
+                </div>
+              ))}
+            </ul>
+          ) : (
+            <div className={styles.title}>Выберите теги</div>
+          )}
+        </div>
         <button className={styles.add_button} onClick={togglePopupHandler}>
           <PlusIcon />
         </button>
@@ -56,17 +72,6 @@ export const AddTaskModalTags = ({
           </div>
         )}
       </div>
-      <ul className={styles.tags}>
-        {selectedTags.map((tag) => (
-          <div
-            key={tag.id}
-            className={styles.selected_tag}
-            onClick={() => removeTagHandler(tag.id)}
-          >
-            <TagBadge tag={tag} />
-          </div>
-        ))}
-      </ul>
     </div>
   );
 };
