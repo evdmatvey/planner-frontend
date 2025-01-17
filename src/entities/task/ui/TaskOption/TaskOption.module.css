@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: var(--color-gray);
+  transition: color 0.15s ease-in;
+}
+
+.root svg path {
+  fill: var(--color-gray);
+  transition: fill 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .root:hover {
+    color: var(--color-gray-light);
+  }
+
+  .root:hover svg path {
+    fill: var(--color-gray-light);
+  }
+}

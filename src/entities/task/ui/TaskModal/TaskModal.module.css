@@ -6,6 +6,7 @@
   top: 0;
   right: 0;
   background: var(--popup-background);
+  z-index: 5;
 }
 
 .close {
