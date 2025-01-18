@@ -3,6 +3,7 @@ import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { useTaskModalStore } from '../../model/task-modal.store';
 import { CreateTaskModal } from './CreateTaskModal';
 import styles from './TaskModal.module.css';
+import { UpdateTaskModal } from './UpdateTaskModal';
 
 export const TaskModal = () => {
   const { modalVariant, isModalOpen, closeModal } = useTaskModalStore();
@@ -23,7 +24,7 @@ export const TaskModal = () => {
           <h3 className={styles.title}>
             {isCreateTaskModal ? 'Создание задачи' : 'Обновление задачи'}
           </h3>
-          {isCreateTaskModal && <CreateTaskModal />}
+          {isCreateTaskModal ? <CreateTaskModal /> : <UpdateTaskModal />}
         </m.div>
       )}
     </AnimatePresence>

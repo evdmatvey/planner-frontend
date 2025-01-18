@@ -7,6 +7,7 @@ import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { EditIcon } from '@/shared/ui/icons/EditIcon';
 import { OptionsIcon } from '@/shared/ui/icons/OptionsIcon';
+import { useTaskModalStore } from '../../model/task-modal.store';
 import { Task } from '../../model/task.types';
 import { useDeleteTask } from '../../model/useDeleteTask';
 import { useToggleCompleteTask } from '../../model/useToggleCompleteTask';
@@ -26,6 +27,13 @@ export const TaskCard = ({ task }: TaskCardProps) => {
   const { isOpen, togglePopupHandler } = usePopup(ref);
   const { mutate: toggleTaskCompleteHandler } = useToggleCompleteTask();
   const { mutate: deleteTaskHandler } = useDeleteTask();
+  const { openUpdateModal, setTaskData } = useTaskModalStore();
+
+  const updateTaskHandler = () => {
+    setTaskData({ ...task });
+    openUpdateModal();
+    togglePopupHandler();
+  };
 
   return (
     <>
@@ -34,7 +42,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
           <OptionsIcon />
         </button>
         <AnimatedPopup className={styles.popup} isOpen={isOpen}>
-          <TaskOption onClick={() => 1 + 1}>
+          <TaskOption onClick={updateTaskHandler}>
             <EditIcon /> Редактировать
           </TaskOption>
           <TaskOption onClick={() => toggleTaskCompleteHandler(id)}>
