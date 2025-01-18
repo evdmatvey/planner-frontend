@@ -5,6 +5,7 @@ import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
 import { CheckIcon } from '@/shared/ui/icons/CheckIcon';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
+import { EditIcon } from '@/shared/ui/icons/EditIcon';
 import { OptionsIcon } from '@/shared/ui/icons/OptionsIcon';
 import { Task } from '../../model/task.types';
 import { useDeleteTask } from '../../model/useDeleteTask';
@@ -32,6 +33,9 @@ export const TaskCard = ({ task }: TaskCardProps) => {
         <OptionsIcon />
       </button>
       <AnimatedPopup className={styles.popup} isOpen={isOpen}>
+        <TaskOption onClick={togglePopupHandler}>
+          <EditIcon /> Редактировать
+        </TaskOption>
         <TaskOption onClick={() => toggleTaskCompleteHandler(id)}>
           {isCompleted ? (
             <>
