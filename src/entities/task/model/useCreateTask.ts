@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { CreateTaskDto, taskQueries, taskService } from '@/entities/task';
+import { cleanDto } from '@/shared/lib/clean-dto';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
 import { toastifyError } from '@/shared/lib/toastify-error';
-import { cleanDto } from '../lib/clean-dto';
 
 export const useCreateTask = (successCallback: () => void) => {
   const queryClient = useQueryClient();

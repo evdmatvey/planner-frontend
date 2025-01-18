@@ -1,31 +1,31 @@
-import { m } from 'framer-motion';
-import { type ReactNode } from 'react';
+import { AnimatePresence, m } from 'framer-motion';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
+import { useTaskModalStore } from '../../model/task-modal.store';
+import { CreateTaskModal } from './CreateTaskModal';
 import styles from './TaskModal.module.css';
 
-interface TaskModalProps {
-  title: string;
-  children: ReactNode;
-  closeModalHandler: () => void;
-}
+export const TaskModal = () => {
+  const { modalVariant, isModalOpen, closeModal } = useTaskModalStore();
+  const isCreateTaskModal = modalVariant === 'create';
 
-export const TaskModal = ({
-  title,
-  children,
-  closeModalHandler,
-}: TaskModalProps) => {
   return (
-    <m.div
-      className={styles.root}
-      initial={{ width: 200, opacity: 0 }}
-      animate={{ width: 450, opacity: 1 }}
-      exit={{ width: 200, opacity: 0 }}
-    >
-      <button className={styles.close} onClick={closeModalHandler}>
-        <CloseIcon />
-      </button>
-      <h3 className={styles.title}>{title}</h3>
-      {children}
-    </m.div>
+    <AnimatePresence>
+      {isModalOpen && (
+        <m.div
+          className={styles.root}
+          initial={{ width: 200, opacity: 0 }}
+          animate={{ width: 450, opacity: 1 }}
+          exit={{ width: 200, opacity: 0 }}
+        >
+          <button className={styles.close} onClick={closeModal}>
+            <CloseIcon />
+          </button>
+          <h3 className={styles.title}>
+            {isCreateTaskModal ? 'Создание задачи' : 'Обновление задачи'}
+          </h3>
+          {isCreateTaskModal && <CreateTaskModal />}
+        </m.div>
+      )}
+    </AnimatePresence>
   );
 };

@@ -31,6 +31,12 @@
   font-weight: 700;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media (hover: hover) {
   .close:hover svg path {
     fill: var(--color-gray-light);

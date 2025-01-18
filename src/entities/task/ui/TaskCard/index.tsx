@@ -28,47 +28,51 @@ export const TaskCard = ({ task }: TaskCardProps) => {
   const { mutate: deleteTaskHandler } = useDeleteTask();
 
   return (
-    <div className={styles.root} ref={ref}>
-      <button className={styles.options} onClick={togglePopupHandler}>
-        <OptionsIcon />
-      </button>
-      <AnimatedPopup className={styles.popup} isOpen={isOpen}>
-        <TaskOption onClick={togglePopupHandler}>
-          <EditIcon /> Редактировать
-        </TaskOption>
-        <TaskOption onClick={() => toggleTaskCompleteHandler(id)}>
-          {isCompleted ? (
-            <>
-              <CloseIcon /> Откатить
-            </>
-          ) : (
-            <>
-              <CheckIcon /> Выполнить
-            </>
-          )}
-        </TaskOption>
-        <TaskOption onClick={() => deleteTaskHandler(id)}>
-          <DeleteIcon /> Удалить
-        </TaskOption>
-      </AnimatedPopup>
-      <div className={styles.text}>
-        <h5 className={styles.title}>{title}</h5>
-        {description && <p className={styles.description}>{description}</p>}
-      </div>
-      {(priority || executionTime) && (
-        <div className={styles.info}>
-          {priority && <TaskPriorityBadge priority={priority} />}
-          {executionTime && <TaskExecutionTime executionTime={executionTime} />}
+    <>
+      <div className={styles.root} ref={ref}>
+        <button className={styles.options} onClick={togglePopupHandler}>
+          <OptionsIcon />
+        </button>
+        <AnimatedPopup className={styles.popup} isOpen={isOpen}>
+          <TaskOption onClick={() => 1 + 1}>
+            <EditIcon /> Редактировать
+          </TaskOption>
+          <TaskOption onClick={() => toggleTaskCompleteHandler(id)}>
+            {isCompleted ? (
+              <>
+                <CloseIcon /> Откатить
+              </>
+            ) : (
+              <>
+                <CheckIcon /> Выполнить
+              </>
+            )}
+          </TaskOption>
+          <TaskOption onClick={() => deleteTaskHandler(id)}>
+            <DeleteIcon /> Удалить
+          </TaskOption>
+        </AnimatedPopup>
+        <div className={styles.text}>
+          <h5 className={styles.title}>{title}</h5>
+          {description && <p className={styles.description}>{description}</p>}
         </div>
-      )}
+        {(priority || executionTime) && (
+          <div className={styles.info}>
+            {priority && <TaskPriorityBadge priority={priority} />}
+            {executionTime && (
+              <TaskExecutionTime executionTime={executionTime} />
+            )}
+          </div>
+        )}
 
-      {tags.length !== 0 && (
-        <div className={styles.tags}>
-          {tags.map((tag) => (
-            <TagBadge key={tag.id} tag={tag} />
-          ))}
-        </div>
-      )}
-    </div>
+        {tags.length !== 0 && (
+          <div className={styles.tags}>
+            {tags.map((tag) => (
+              <TagBadge key={tag.id} tag={tag} />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
