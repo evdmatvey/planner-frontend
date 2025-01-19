@@ -8,6 +8,10 @@
   background: var(--content-background);
 }
 
+.completed {
+  opacity: 0.5;
+}
+
 .title {
   padding-right: 25px;
   color: var(--text-light);

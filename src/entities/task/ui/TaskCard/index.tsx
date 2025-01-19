@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useRef } from 'react';
 import { TagBadge } from '@/entities/tag';
 import { usePopup } from '@/shared/lib/usePopup';
@@ -28,6 +29,9 @@ export const TaskCard = ({ task }: TaskCardProps) => {
   const { mutate: toggleTaskCompleteHandler } = useToggleCompleteTask();
   const { mutate: deleteTaskHandler } = useDeleteTask();
   const { openUpdateModal, setTaskData } = useTaskModalStore();
+  const classes = clsx(styles.root, {
+    [styles.completed]: isCompleted,
+  });
 
   const updateTaskHandler = () => {
     setTaskData({ ...task });
@@ -37,7 +41,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 
   return (
     <>
-      <div className={styles.root} ref={ref}>
+      <div className={classes} ref={ref}>
         <button className={styles.options} onClick={togglePopupHandler}>
           <OptionsIcon />
         </button>

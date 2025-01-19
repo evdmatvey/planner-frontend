@@ -1,3 +1,4 @@
+import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
 import {
@@ -36,13 +37,32 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
           </button>
         )}
       </div>
-      <div className={styles.content}>
-        <div className={styles.cards}>
-          {filteredTasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
-          ))}
-        </div>
-      </div>
+      <Droppable droppableId={group.value}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={styles.content}
+          >
+            <div className={styles.cards}>
+              {filteredTasks.map((task, index) => (
+                <Draggable key={task.id} draggableId={task.id} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <TaskCard key={task.id} task={task} />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 };
