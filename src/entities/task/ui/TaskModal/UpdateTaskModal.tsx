@@ -1,11 +1,13 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { SelectOrCreateTagPopup } from '@/entities/tag';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { UpdateTaskDto } from '../../api/dto/update-task.dto';
 import { useTaskModalStore } from '../../model/task-modal.store';
+import { useTaskMutation } from '../../model/useTaskMutation';
 import { useUpdateTask } from '../../model/useUpdateTask';
 import { SelectTaskPriority } from '../SelectTaskPriority';
 import styles from './TaskModal.module.css';
@@ -23,13 +25,18 @@ export const UpdateTaskModal = () => {
     },
   });
 
-  const { updateTaskHandler } = useUpdateTask(taskData?.id ?? '', () => {
+  const { updateTask } = useUpdateTask((data) => {
     reset();
     closeModal();
+    if (data) toast.success(data?.message);
   });
 
+  const { mutateTaskHandler } = useTaskMutation((dto) =>
+    updateTask({ id: taskData?.id as string, dto }),
+  );
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit(updateTaskHandler)}>
+    <form className={styles.form} onSubmit={handleSubmit(mutateTaskHandler)}>
       <TransparentInput
         {...register('title')}
         variant="underscore"

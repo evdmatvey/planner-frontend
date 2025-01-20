@@ -1,36 +1,28 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
-import { CreateTaskDto, taskQueries, taskService } from '@/entities/task';
-import { cleanDto } from '@/shared/lib/clean-dto';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
 import { toastifyError } from '@/shared/lib/toastify-error';
+import { type CreateTaskDto } from '../api/dto/create-task.dto';
+import { type CreateTaskResponse } from '../api/dto/task.response';
+import { taskQueries } from '../api/task.queries';
+import { taskService } from '../api/task.service';
 
-export const useCreateTask = (successCallback: () => void) => {
+type CreateTaskCallback = (data?: CreateTaskResponse) => void;
+
+export const useCreateTask = (callback?: CreateTaskCallback) => {
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation({
+  const { mutate: createTask } = useMutation({
     mutationKey: ['task', 'create'],
     mutationFn: (dto: CreateTaskDto) => taskService.create(dto),
     onSuccess: (data) => {
-      toast.success(data.message);
-      queryClient.refetchQueries({ queryKey: taskQueries.lists() });
-      successCallback();
+      queryClient.invalidateQueries({
+        queryKey: taskQueries.lists(),
+      });
+
+      if (callback) callback(data);
     },
-    onError: (error) => {
-      toastifyError(getErrorMessage(error));
-    },
+    onError: (error) => toastifyError(getErrorMessage(error)),
   });
 
-  const createTaskHandler = (dto: CreateTaskDto) => {
-    const cleanedDto = cleanDto(dto);
-
-    if (!cleanedDto.title) {
-      toast.error('Укажите название задачи!');
-      return;
-    }
-
-    mutate(cleanedDto as CreateTaskDto);
-  };
-
-  return { createTaskHandler };
+  return { createTask };
 };

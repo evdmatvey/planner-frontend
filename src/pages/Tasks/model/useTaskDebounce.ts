@@ -2,17 +2,15 @@ import debounce from 'lodash.debounce';
 import { useCallback, useEffect } from 'react';
 import { UseFormWatch } from 'react-hook-form';
 import { Tag } from '@/entities/tag';
-import { CreateTaskDto } from '@/entities/task';
+import { CreateTaskDto, useCreateTask, useUpdateTask } from '@/entities/task';
 import { cleanDto } from '@/shared/lib/clean-dto';
-import { useCreateTask } from './useCreateTask';
-import { useUpdateTask } from './useUpdateTask';
 
 interface IUseTaskDebounce {
   watch: UseFormWatch<CreateTaskDto>;
   itemId: string;
 }
 
-export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
+export function useListTaskMutation({ watch, itemId }: IUseTaskDebounce) {
   const { createTask } = useCreateTask();
   const { updateTask } = useUpdateTask();
 

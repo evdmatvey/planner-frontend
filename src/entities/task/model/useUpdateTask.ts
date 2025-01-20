@@ -1,36 +1,33 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
-import { UpdateTaskDto, taskQueries, taskService } from '@/entities/task';
-import { cleanDto } from '@/shared/lib/clean-dto';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
 import { toastifyError } from '@/shared/lib/toastify-error';
+import { type UpdateTaskResponse } from '../api/dto/task.response';
+import { type UpdateTaskDto } from '../api/dto/update-task.dto';
+import { taskQueries } from '../api/task.queries';
+import { taskService } from '../api/task.service';
 
-export const useUpdateTask = (taskId: string, successCallback: () => void) => {
+type UpdateTaskCallback = (data?: UpdateTaskResponse) => void;
+type UpdateTaskArguments = {
+  id: string;
+  dto: UpdateTaskDto;
+};
+
+export const useUpdateTask = (callback?: UpdateTaskCallback) => {
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation({
+  const { mutate: updateTask } = useMutation({
     mutationKey: ['task', 'update'],
-    mutationFn: (dto: UpdateTaskDto) => taskService.update(taskId, dto),
+    mutationFn: ({ id, dto }: UpdateTaskArguments) =>
+      taskService.update(id, dto),
     onSuccess: (data) => {
-      toast.success(data.message);
-      queryClient.refetchQueries({ queryKey: taskQueries.lists() });
-      successCallback();
+      queryClient.invalidateQueries({
+        queryKey: taskQueries.lists(),
+      });
+
+      if (callback) callback(data);
     },
-    onError: (error) => {
-      toastifyError(getErrorMessage(error));
-    },
+    onError: (error) => toastifyError(getErrorMessage(error)),
   });
 
-  const updateTaskHandler = (dto: UpdateTaskDto) => {
-    const cleanedDto = cleanDto(dto);
-
-    if (!cleanedDto.title) {
-      toast.error('Укажите название задачи!');
-      return;
-    }
-
-    mutate(dto);
-  };
-
-  return { updateTaskHandler };
+  return { updateTask };
 };

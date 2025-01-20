@@ -11,7 +11,7 @@ import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { MoveIcon } from '@/shared/ui/icons/MoveIcon';
-import { useTaskDebounce } from '../../model/useTaskDebounce';
+import { useListTaskMutation } from '../../model/useTaskDebounce';
 import styles from './ListTask.module.css';
 
 interface ListTaskProps {
@@ -30,7 +30,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
     },
   });
 
-  useTaskDebounce({ watch, itemId: task.id });
+  useListTaskMutation({ watch, itemId: task.id });
 
   return (
     <div className={styles.root}>
