@@ -11,7 +11,7 @@ import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { MoveIcon } from '@/shared/ui/icons/MoveIcon';
-import { useListTaskMutation } from '../../model/useTaskDebounce';
+import { useListTaskMutation } from '../../model/useListTaskMutation';
 import styles from './ListTask.module.css';
 
 interface ListTaskProps {
