@@ -1,6 +1,10 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { type Task } from '@/entities/task';
-import { filterTasksByGroup } from '../../lib/filter-tasks-by-group';
+import {
+  filterTasksByGroup,
+  referenceDateForValue,
+} from '../../lib/filter-tasks-by-group';
+import { useTasksStore } from '../../model/store';
 import { type TaskGroup } from '../../model/task-groups';
 import { ListTask } from '../ListTask';
 import styles from './ListRow.module.css';
@@ -11,7 +15,23 @@ interface ListRowProps {
 }
 
 export const ListRow = ({ group, tasks }: ListRowProps) => {
+  const { addTask } = useTasksStore();
   const filteredTasks = filterTasksByGroup(tasks, group.value);
+
+  const addTaskHandler = () => {
+    const isCompleted = group.value === 'completed';
+    const referenceDate = isCompleted
+      ? referenceDateForValue.today
+      : referenceDateForValue[group.value];
+
+    addTask({
+      id: '',
+      title: '',
+      createdAt: referenceDate.toISOString(),
+      isCompleted: isCompleted,
+      tags: [],
+    });
+  };
 
   return (
     <div className={styles.root}>
@@ -40,6 +60,9 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
           </div>
         )}
       </Droppable>
+      <button className={styles.add} onClick={addTaskHandler}>
+        Добавить задачу +
+      </button>
     </div>
   );
 };

@@ -1,11 +1,17 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import { SelectOrCreateTagPopup } from '@/entities/tag';
-import { CreateTaskDto, SelectTaskPriority, Task } from '@/entities/task';
+import {
+  CreateTaskDto,
+  SelectTaskPriority,
+  Task,
+  useDeleteTask,
+} from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { MoveIcon } from '@/shared/ui/icons/MoveIcon';
+import { useTaskDebounce } from '../../model/useTaskDebounce';
 import styles from './ListTask.module.css';
 
 interface ListTaskProps {
@@ -13,7 +19,8 @@ interface ListTaskProps {
 }
 
 export const ListTask = ({ task }: ListTaskProps) => {
-  const { register, control } = useForm<CreateTaskDto>({
+  const { mutate } = useDeleteTask();
+  const { register, control, watch } = useForm<CreateTaskDto>({
     defaultValues: {
       title: task.title,
       description: task.description,
@@ -22,6 +29,8 @@ export const ListTask = ({ task }: ListTaskProps) => {
       priority: task.priority,
     },
   });
+
+  useTaskDebounce({ watch, itemId: task.id });
 
   return (
     <div className={styles.root}>
@@ -69,7 +78,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
           />
         </div>
       </div>
-      <button className={styles.delete}>
+      <button className={styles.delete} onClick={() => mutate(task.id)}>
         <DeleteIcon />
       </button>
     </div>
