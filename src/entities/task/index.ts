@@ -4,6 +4,7 @@ export * from './api/dto/task.response';
 export * from './model/task.types';
 export * from './model/task-modal.store';
 export * from './model/useToggleCompleteTask';
+export * from './model/useDeleteTask';
 export * from './model/useUpdateTask';
 export * from './api/task.queries';
 export * from './api/task.service';
