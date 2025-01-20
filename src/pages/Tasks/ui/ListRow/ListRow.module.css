@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.tasks {
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.add {
+  background: transparent;
+  border: none;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+  align-self: flex-start;
+}
+
+@media (hover: hover) {
+  .add:hover {
+    color: var(--color-gray-light);
+  }
+}

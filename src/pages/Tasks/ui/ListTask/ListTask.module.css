@@ -1,0 +1,50 @@
+.root {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-r-xs);
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, calc(100% / 5));
+  align-items: center;
+}
+
+.cell {
+  height: 40px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border-color);
+}
+
+.delete,
+.move {
+  padding: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.move {
+  cursor: grab;
+}
+
+.delete svg path,
+.move svg path {
+  fill: var(--color-gray);
+  transition: fill 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .move:hover svg path,
+  .delete:hover svg path {
+    fill: var(--color-gray-light);
+  }
+}
