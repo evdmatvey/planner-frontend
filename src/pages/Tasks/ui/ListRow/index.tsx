@@ -57,9 +57,11 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
           </div>
         )}
       </Droppable>
-      <button className={styles.add} onClick={addTaskHandler}>
-        Добавить задачу +
-      </button>
+      {group.value !== 'completed' && (
+        <button className={styles.add} onClick={addTaskHandler}>
+          Добавить задачу +
+        </button>
+      )}
     </div>
   );
 };
