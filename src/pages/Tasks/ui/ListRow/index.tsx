@@ -6,6 +6,7 @@ import {
 } from '../../lib/filter-tasks-by-group';
 import { useTasksStore } from '../../model/store';
 import { type TaskGroup } from '../../model/task-groups';
+import { GroupTitle } from '../GroupTitle';
 import { ListTask } from '../ListTask';
 import styles from './ListRow.module.css';
 
@@ -32,7 +33,7 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.title}>{group.label}</div>
+      <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
       <Droppable droppableId={group.value}>
         {(provided) => (
           <div

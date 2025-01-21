@@ -6,6 +6,7 @@ import {
   getReferenceISODateByValue,
 } from '../../lib/filter-tasks-by-group';
 import { TaskGroup } from '../../model/task-groups';
+import { GroupTitle } from '../GroupTitle';
 import styles from './BoardColumn.module.css';
 
 interface BoardColumnProps {
@@ -27,7 +28,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <h3>{group.label}</h3>
+        <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
         {group.value !== 'completed' && (
           <button className={styles.add} onClick={addTaskHandler}>
             <PlusIcon />
