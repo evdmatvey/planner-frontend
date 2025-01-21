@@ -2,10 +2,11 @@ import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { type Task } from '@/entities/task';
 import {
   filterTasksByGroup,
-  referenceDateForValue,
+  getReferenceISODateByValue,
 } from '../../lib/filter-tasks-by-group';
 import { useTasksStore } from '../../model/store';
 import { type TaskGroup } from '../../model/task-groups';
+import { GroupTitle } from '../GroupTitle';
 import { ListTask } from '../ListTask';
 import styles from './ListRow.module.css';
 
@@ -19,23 +20,20 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
   const filteredTasks = filterTasksByGroup(tasks, group.value);
 
   const addTaskHandler = () => {
-    const isCompleted = group.value === 'completed';
-    const referenceDate = isCompleted
-      ? referenceDateForValue.today
-      : referenceDateForValue[group.value];
+    const referenceDate = getReferenceISODateByValue(group.value);
 
     addTask({
       id: '',
       title: '',
-      createdAt: referenceDate.toISOString(),
-      isCompleted: isCompleted,
+      createdAt: referenceDate,
+      isCompleted: false,
       tags: [],
     });
   };
 
   return (
     <div className={styles.root}>
-      <div className={styles.title}>{group.label}</div>
+      <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
       <Droppable droppableId={group.value}>
         {(provided) => (
           <div
@@ -60,9 +58,11 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
           </div>
         )}
       </Droppable>
-      <button className={styles.add} onClick={addTaskHandler}>
-        Добавить задачу +
-      </button>
+      {group.value !== 'completed' && (
+        <button className={styles.add} onClick={addTaskHandler}>
+          Добавить задачу +
+        </button>
+      )}
     </div>
   );
 };

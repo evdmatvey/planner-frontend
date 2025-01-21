@@ -1,3 +1,4 @@
+import { IconButton } from '@/shared/ui/IconButton';
 import { ExpendLeftIcon } from '@/shared/ui/icons/ExpendLeftIcon';
 import { ExpendRightIcon } from '@/shared/ui/icons/ExpendRightIcon';
 import { useDashboardSidebarStore } from '../../model/store';
@@ -7,8 +8,10 @@ export const ToggleCollapseButton = () => {
   const { isCollapsed, toggleIsCollapsed } = useDashboardSidebarStore();
 
   return (
-    <button className={styles.root} onClick={toggleIsCollapsed}>
-      {isCollapsed ? <ExpendRightIcon /> : <ExpendLeftIcon />}
-    </button>
+    <IconButton
+      className={styles.root}
+      onClick={toggleIsCollapsed}
+      icon={isCollapsed ? <ExpendRightIcon /> : <ExpendLeftIcon />}
+    />
   );
 };

@@ -8,10 +8,11 @@ import {
   useDeleteTask,
 } from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
+import { IconButton } from '@/shared/ui/IconButton';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { MoveIcon } from '@/shared/ui/icons/MoveIcon';
-import { useTaskDebounce } from '../../model/useTaskDebounce';
+import { useListTaskMutation } from '../../model/useListTaskMutation';
 import styles from './ListTask.module.css';
 
 interface ListTaskProps {
@@ -30,13 +31,11 @@ export const ListTask = ({ task }: ListTaskProps) => {
     },
   });
 
-  useTaskDebounce({ watch, itemId: task.id });
+  useListTaskMutation({ watch, itemId: task.id });
 
   return (
     <div className={styles.root}>
-      <div className={styles.move}>
-        <MoveIcon />
-      </div>
+      <IconButton className={styles.move} icon={<MoveIcon />} />
       <div className={styles.content}>
         <div className={styles.cell}>
           <TransparentInput {...register('title')} />
@@ -64,6 +63,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
               <SelectOrCreateTagPopup
                 defaultTags={value ?? []}
                 onChange={onChange}
+                withCreate
               />
             )}
           />
@@ -78,9 +78,11 @@ export const ListTask = ({ task }: ListTaskProps) => {
           />
         </div>
       </div>
-      <button className={styles.delete} onClick={() => mutate(task.id)}>
-        <DeleteIcon />
-      </button>
+      <IconButton
+        className={styles.delete}
+        onClick={() => mutate(task.id)}
+        icon={<DeleteIcon />}
+      />
     </div>
   );
 };

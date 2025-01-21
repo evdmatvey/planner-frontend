@@ -1,11 +1,13 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
+import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
 import {
   filterTasksByGroup,
-  referenceDateForValue,
+  getReferenceISODateByValue,
 } from '../../lib/filter-tasks-by-group';
 import { TaskGroup } from '../../model/task-groups';
+import { GroupTitle } from '../GroupTitle';
 import styles from './BoardColumn.module.css';
 
 interface BoardColumnProps {
@@ -17,10 +19,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
   const { openCreateModal, setTaskData } = useTaskModalStore();
 
   const filteredTasks = filterTasksByGroup(tasks, group.value);
-  const referenceDate =
-    group.value === 'completed'
-      ? referenceDateForValue.today.toISOString()
-      : referenceDateForValue[group.value].toISOString();
+  const referenceDate = getReferenceISODateByValue(group.value);
 
   const addTaskHandler = () => {
     openCreateModal();
@@ -30,11 +29,9 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <h3>{group.label}</h3>
+        <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
         {group.value !== 'completed' && (
-          <button className={styles.add} onClick={addTaskHandler}>
-            <PlusIcon />
-          </button>
+          <IconButton onClick={addTaskHandler} icon={<PlusIcon />} />
         )}
       </div>
       <Droppable droppableId={group.value}>

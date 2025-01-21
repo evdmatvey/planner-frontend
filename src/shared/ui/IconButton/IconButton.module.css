@@ -1,0 +1,21 @@
+.root {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.root svg path {
+  fill: var(--color-gray);
+  transition: fill 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .root:hover svg path {
+    fill: var(--color-gray-light);
+  }
+}

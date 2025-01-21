@@ -23,28 +23,9 @@
 
 .delete,
 .move {
-  padding: 0 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: transparent;
-  cursor: pointer;
+  margin: 0 5px;
 }
 
 .move {
   cursor: grab;
-}
-
-.delete svg path,
-.move svg path {
-  fill: var(--color-gray);
-  transition: fill 0.15s ease-in;
-}
-
-@media (hover: hover) {
-  .move:hover svg path,
-  .delete:hover svg path {
-    fill: var(--color-gray-light);
-  }
 }
