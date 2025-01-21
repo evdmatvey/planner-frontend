@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { type RefObject, forwardRef } from 'react';
 import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
+import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
 import { tagQueries } from '../../api/tag.queries';
 import { type Tag } from '../../model/tag.types';
@@ -21,13 +22,11 @@ export const TagsPopup = forwardRef<HTMLElement, TagsPopupProps>(
 
     return (
       <>
-        <button
+        <IconButton
           type="button"
-          className={styles.add_button}
           onClick={togglePopupHandler}
-        >
-          <PlusIcon />
-        </button>
+          icon={<PlusIcon />}
+        />
         <AnimatedPopup isOpen={isOpen} className={styles.popup}>
           {tags?.map((tag) => (
             <TagBadge

@@ -1,4 +1,5 @@
 import { AnimatePresence, m } from 'framer-motion';
+import { IconButton } from '@/shared/ui/IconButton';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { useTaskModalStore } from '../../model/task-modal.store';
 import { CreateTaskModal } from './CreateTaskModal';
@@ -18,9 +19,11 @@ export const TaskModal = () => {
           animate={{ width: 450, opacity: 1 }}
           exit={{ width: 200, opacity: 0 }}
         >
-          <button className={styles.close} onClick={closeModal}>
-            <CloseIcon />
-          </button>
+          <IconButton
+            className={styles.close}
+            onClick={closeModal}
+            icon={<CloseIcon />}
+          />
           <h3 className={styles.title}>
             {isCreateTaskModal ? 'Создание задачи' : 'Обновление задачи'}
           </h3>

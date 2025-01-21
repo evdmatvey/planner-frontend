@@ -1,5 +1,6 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
+import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
 import {
   filterTasksByGroup,
@@ -30,9 +31,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
       <div className={styles.title}>
         <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
         {group.value !== 'completed' && (
-          <button className={styles.add} onClick={addTaskHandler}>
-            <PlusIcon />
-          </button>
+          <IconButton onClick={addTaskHandler} icon={<PlusIcon />} />
         )}
       </div>
       <Droppable droppableId={group.value}>

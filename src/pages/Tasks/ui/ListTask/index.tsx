@@ -8,6 +8,7 @@ import {
   useDeleteTask,
 } from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
+import { IconButton } from '@/shared/ui/IconButton';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { MoveIcon } from '@/shared/ui/icons/MoveIcon';
@@ -34,9 +35,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.move}>
-        <MoveIcon />
-      </div>
+      <IconButton className={styles.move} icon={<MoveIcon />} />
       <div className={styles.content}>
         <div className={styles.cell}>
           <TransparentInput {...register('title')} />
@@ -78,9 +77,11 @@ export const ListTask = ({ task }: ListTaskProps) => {
           />
         </div>
       </div>
-      <button className={styles.delete} onClick={() => mutate(task.id)}>
-        <DeleteIcon />
-      </button>
+      <IconButton
+        className={styles.delete}
+        onClick={() => mutate(task.id)}
+        icon={<DeleteIcon />}
+      />
     </div>
   );
 };
