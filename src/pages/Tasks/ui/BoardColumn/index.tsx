@@ -3,7 +3,7 @@ import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
 import {
   filterTasksByGroup,
-  referenceDateForValue,
+  getReferenceISODateByValue,
 } from '../../lib/filter-tasks-by-group';
 import { TaskGroup } from '../../model/task-groups';
 import styles from './BoardColumn.module.css';
@@ -17,10 +17,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
   const { openCreateModal, setTaskData } = useTaskModalStore();
 
   const filteredTasks = filterTasksByGroup(tasks, group.value);
-  const referenceDate =
-    group.value === 'completed'
-      ? referenceDateForValue.today.toISOString()
-      : referenceDateForValue[group.value].toISOString();
+  const referenceDate = getReferenceISODateByValue(group.value);
 
   const addTaskHandler = () => {
     openCreateModal();

@@ -2,7 +2,7 @@ import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { type Task } from '@/entities/task';
 import {
   filterTasksByGroup,
-  referenceDateForValue,
+  getReferenceISODateByValue,
 } from '../../lib/filter-tasks-by-group';
 import { useTasksStore } from '../../model/store';
 import { type TaskGroup } from '../../model/task-groups';
@@ -19,16 +19,13 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
   const filteredTasks = filterTasksByGroup(tasks, group.value);
 
   const addTaskHandler = () => {
-    const isCompleted = group.value === 'completed';
-    const referenceDate = isCompleted
-      ? referenceDateForValue.today
-      : referenceDateForValue[group.value];
+    const referenceDate = getReferenceISODateByValue(group.value);
 
     addTask({
       id: '',
       title: '',
-      createdAt: referenceDate.toISOString(),
-      isCompleted: isCompleted,
+      createdAt: referenceDate,
+      isCompleted: false,
       tags: [],
     });
   };

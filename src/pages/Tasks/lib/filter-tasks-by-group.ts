@@ -21,6 +21,16 @@ export const referenceDateForValue: Omit<
   later: dayjs().add(1, 'week').startOf('day'),
 };
 
+export const getReferenceISODateByValue = (value: TaskGroupValue) => {
+  const isCompleted = value === 'completed';
+
+  const referenceDate = isCompleted
+    ? referenceDateForValue.today
+    : referenceDateForValue[value];
+
+  return referenceDate.toISOString();
+};
+
 const isToday = (createdAt: string) =>
   dayjs(createdAt).isSame(referenceDateForValue.today, 'day');
 
