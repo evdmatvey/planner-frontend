@@ -1,0 +1,57 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.color {
+  width: 15px;
+  height: 15px;
+  border: 1px solid transparent;
+  border-radius: var(--border-r-xs);
+  cursor: pointer;
+}
+
+.red {
+  background: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.green {
+  background: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.pink {
+  background: var(--color-pink);
+  border-color: var(--color-pink);
+}
+
+.blue {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.sky_blue {
+  background: var(--color-sky-blue);
+  border-color: var(--color-sky-blue);
+}
+
+.orange {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.accent {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.yellow {
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+}
+
+.color.selected {
+  border-color: white;
+}

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { SelectOrCreateTagPopup } from '@/entities/tag';
+import { SelectOrCreateTagPopup } from '@/entities/tag/@x/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';

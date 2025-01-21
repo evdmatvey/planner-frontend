@@ -63,6 +63,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
               <SelectOrCreateTagPopup
                 defaultTags={value ?? []}
                 onChange={onChange}
+                withCreate
               />
             )}
           />

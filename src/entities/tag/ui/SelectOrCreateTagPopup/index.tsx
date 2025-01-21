@@ -7,11 +7,13 @@ import { TagsPopup } from './TagsPopup';
 
 interface SelectOrCreateTagPopupProps {
   defaultTags: Tag[];
+  withCreate?: boolean;
   onChange: (tags: Tag[]) => void;
 }
 
 export const SelectOrCreateTagPopup = ({
   defaultTags,
+  withCreate,
   onChange,
 }: SelectOrCreateTagPopupProps) => {
   const { selectedTags, addTagHandler, removeTagHandler } = useTagsPopupState(
@@ -39,7 +41,11 @@ export const SelectOrCreateTagPopup = ({
           <div className={styles.title}>Выберите теги</div>
         )}
       </div>
-      <TagsPopup ref={ref} addTagHandler={addTagHandler} />
+      <TagsPopup
+        ref={ref}
+        addTagHandler={addTagHandler}
+        withCreate={withCreate}
+      />
     </div>
   );
 };
