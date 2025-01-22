@@ -1,0 +1,28 @@
+.root {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  cursor: pointer;
+  position: relative;
+}
+
+.popup {
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  display: flex;
+  gap: 10px;
+  background: var(--popup-background);
+  border-radius: var(--border-r-m);
+  z-index: 10;
+}

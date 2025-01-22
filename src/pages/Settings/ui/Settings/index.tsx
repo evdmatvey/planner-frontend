@@ -1,3 +1,4 @@
+import { TagsSettings } from '../TagsSettings';
 import { UpdateProfileForm } from '../UpdateProfileForm';
 import styles from './Settings.module.css';
 
@@ -8,6 +9,7 @@ export const Settings = () => {
 
       <div className={styles.settings}>
         <UpdateProfileForm />
+        <TagsSettings />
       </div>
     </div>
   );
