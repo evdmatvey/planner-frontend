@@ -1,0 +1,11 @@
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
