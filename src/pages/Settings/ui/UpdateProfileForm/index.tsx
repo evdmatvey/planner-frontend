@@ -1,6 +1,7 @@
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { useUpdateProfile } from '../../model/useUpdateProfile';
+import { SettingsItemTitle } from '../SettingsItemTitle';
 import styles from './UpdateProfileForm.module.css';
 
 export const UpdateProfileForm = () => {
@@ -8,7 +9,7 @@ export const UpdateProfileForm = () => {
 
   return (
     <div className={styles.root}>
-      <h3 className={styles.title}>Настройки профиля</h3>
+      <SettingsItemTitle text="Настройки профиля" />
       <form className={styles.form} onSubmit={onSubmit}>
         <Input
           register={register('email', {
