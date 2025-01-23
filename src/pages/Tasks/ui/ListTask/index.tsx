@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
-import { SelectOrCreateTagPopup } from '@/entities/tag';
+import { SelectTagPopup } from '@/entities/tag';
 import {
   CreateTaskDto,
   SelectTaskPriority,
@@ -60,11 +60,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
             control={control}
             name="tags"
             render={({ field: { value, onChange } }) => (
-              <SelectOrCreateTagPopup
-                defaultTags={value ?? []}
-                onChange={onChange}
-                withCreate
-              />
+              <SelectTagPopup defaultTags={value ?? []} onChange={onChange} />
             )}
           />
         </div>

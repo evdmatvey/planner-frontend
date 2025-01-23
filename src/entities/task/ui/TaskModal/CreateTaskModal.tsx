@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { SelectOrCreateTagPopup } from '@/entities/tag/@x/task';
+import { SelectTagPopup } from '@/entities/tag/@x/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
-import { CreateTaskDto } from '../../api/dto/create-task.dto';
+import { type CreateTaskDto } from '../../api/dto/create-task.dto';
 import { useTaskModalStore } from '../../model/task-modal.store';
 import { useCreateTask } from '../../model/useCreateTask';
 import { useTaskMutation } from '../../model/useTaskMutation';
@@ -58,10 +58,7 @@ export const CreateTaskModal = () => {
         control={control}
         name="tags"
         render={({ field: { value, onChange } }) => (
-          <SelectOrCreateTagPopup
-            defaultTags={value ?? []}
-            onChange={onChange}
-          />
+          <SelectTagPopup defaultTags={value ?? []} onChange={onChange} />
         )}
       />
       <Controller
