@@ -3,7 +3,6 @@ export * from './api/dto/update-task.dto';
 export * from './api/dto/task.response';
 export * from './model/task.types';
 export * from './model/task-modal.store';
-export * from './model/useDeleteTask';
 export * from './model/useUpdateTask';
 export * from './model/useCreateTask';
 export * from './api/task.queries';

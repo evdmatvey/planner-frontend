@@ -1,12 +1,8 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
+import { useDeleteTask } from '@/features/delete-task';
 import { SelectTagPopup } from '@/entities/tag';
-import {
-  CreateTaskDto,
-  SelectTaskPriority,
-  Task,
-  useDeleteTask,
-} from '@/entities/task';
+import { CreateTaskDto, SelectTaskPriority, Task } from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { IconButton } from '@/shared/ui/IconButton';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
@@ -20,7 +16,7 @@ interface ListTaskProps {
 }
 
 export const ListTask = ({ task }: ListTaskProps) => {
-  const { mutate } = useDeleteTask();
+  const { deleteTask } = useDeleteTask();
   const { register, control, watch } = useForm<CreateTaskDto>({
     defaultValues: {
       title: task.title,
@@ -76,7 +72,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
       </div>
       <IconButton
         className={styles.delete}
-        onClick={() => mutate(task.id)}
+        onClick={() => deleteTask(task.id)}
         icon={<DeleteIcon />}
       />
     </div>

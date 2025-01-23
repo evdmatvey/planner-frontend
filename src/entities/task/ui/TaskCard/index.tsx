@@ -3,12 +3,10 @@ import { type ReactNode, useRef } from 'react';
 import { TagList } from '@/entities/tag/@x/task';
 import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
-import { DeleteIcon } from '@/shared/ui/icons/DeleteIcon';
 import { EditIcon } from '@/shared/ui/icons/EditIcon';
 import { OptionsIcon } from '@/shared/ui/icons/OptionsIcon';
 import { useTaskModalStore } from '../../model/task-modal.store';
 import { Task } from '../../model/task.types';
-import { useDeleteTask } from '../../model/useDeleteTask';
 import { TaskExecutionTime } from '../TaskExecutionTime';
 import { TaskOption } from '../TaskOption';
 import { TaskPriorityBadge } from '../TaskPriorityBadge';
@@ -20,11 +18,10 @@ interface TaskCardProps {
 }
 
 export const TaskCard = ({ task, optionsSlot }: TaskCardProps) => {
-  const { id, isCompleted, title, description, priority, executionTime, tags } =
+  const { isCompleted, title, description, priority, executionTime, tags } =
     task;
   const ref = useRef<HTMLDivElement>(null);
   const { isOpen, togglePopupHandler } = usePopup(ref);
-  const { mutate: deleteTaskHandler } = useDeleteTask();
   const { openUpdateModal, setTaskData } = useTaskModalStore();
   const classes = clsx(styles.root, {
     [styles.completed]: isCompleted,
@@ -47,9 +44,6 @@ export const TaskCard = ({ task, optionsSlot }: TaskCardProps) => {
             <EditIcon /> Редактировать
           </TaskOption>
           {optionsSlot}
-          <TaskOption onClick={() => deleteTaskHandler(id)}>
-            <DeleteIcon /> Удалить
-          </TaskOption>
         </AnimatedPopup>
         <div className={styles.text}>
           <h5 className={styles.title}>{title}</h5>
