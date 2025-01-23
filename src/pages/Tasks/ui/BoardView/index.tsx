@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { CreateTaskModal } from '@/features/create-task';
 import { UpdateTaskModal } from '@/features/update-task';
 import { TaskModal, taskQueries } from '@/entities/task';
 import { taskGroups } from '../../model/task-groups';
@@ -12,7 +13,12 @@ export const BoardView = () => {
   return (
     <TaskView
       className={styles.root}
-      modalSlot={<TaskModal updateModal={<UpdateTaskModal />} />}
+      modalSlot={
+        <TaskModal
+          updateModal={<UpdateTaskModal />}
+          createModal={<CreateTaskModal />}
+        />
+      }
     >
       {taskGroups?.map((group) => (
         <BoardColumn key={group.value} group={group} tasks={tasks || []} />

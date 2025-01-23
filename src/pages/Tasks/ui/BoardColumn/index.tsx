@@ -1,10 +1,9 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
+import { AddTaskButton } from '@/features/create-task';
 import { DeleteTaskOption } from '@/features/delete-task';
 import { ToggleCompleteTask } from '@/features/toggle-complete-task';
 import { UpdateTaskOption } from '@/features/update-task';
-import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
-import { IconButton } from '@/shared/ui/IconButton';
-import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
+import { type Task, TaskCard } from '@/entities/task';
 import {
   filterTasksByGroup,
   getReferenceISODateByValue,
@@ -19,22 +18,15 @@ interface BoardColumnProps {
 }
 
 export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
-  const { openCreateModal, setTaskData } = useTaskModalStore();
-
   const filteredTasks = filterTasksByGroup(tasks, group.value);
   const referenceDate = getReferenceISODateByValue(group.value);
-
-  const addTaskHandler = () => {
-    openCreateModal();
-    setTaskData({ createdAt: referenceDate });
-  };
 
   return (
     <div className={styles.root}>
       <div className={styles.title}>
         <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
         {group.value !== 'completed' && (
-          <IconButton onClick={addTaskHandler} icon={<PlusIcon />} />
+          <AddTaskButton referenceDate={referenceDate} />
         )}
       </div>
       <Droppable droppableId={group.value}>

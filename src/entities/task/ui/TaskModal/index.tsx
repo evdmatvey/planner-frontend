@@ -3,14 +3,14 @@ import { type ReactNode } from 'react';
 import { IconButton } from '@/shared/ui/IconButton';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { useTaskModalStore } from '../../model/task-modal.store';
-import { CreateTaskModal } from './CreateTaskModal';
 import styles from './TaskModal.module.css';
 
 interface TaskModalProps {
   updateModal: ReactNode;
+  createModal: ReactNode;
 }
 
-export const TaskModal = ({ updateModal }: TaskModalProps) => {
+export const TaskModal = ({ updateModal, createModal }: TaskModalProps) => {
   const { modalVariant, isModalOpen, closeModal } = useTaskModalStore();
   const isCreateTaskModal = modalVariant === 'create';
 
@@ -31,7 +31,7 @@ export const TaskModal = ({ updateModal }: TaskModalProps) => {
           <h3 className={styles.title}>
             {isCreateTaskModal ? 'Создание задачи' : 'Обновление задачи'}
           </h3>
-          {isCreateTaskModal ? <CreateTaskModal /> : updateModal}
+          {isCreateTaskModal ? createModal : updateModal}
         </m.div>
       )}
     </AnimatePresence>

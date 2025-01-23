@@ -1,10 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  type CreateTaskDto,
+  type CreateTaskResponse,
+  taskQueries,
+  taskService,
+} from '@/entities/task';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
 import { toastifyError } from '@/shared/lib/toastify-error';
-import { type CreateTaskDto } from '../api/dto/create-task.dto';
-import { type CreateTaskResponse } from '../api/dto/task.response';
-import { taskQueries } from '../api/task.queries';
-import { taskService } from '../api/task.service';
 
 type CreateTaskCallback = (data?: CreateTaskResponse) => void;
 

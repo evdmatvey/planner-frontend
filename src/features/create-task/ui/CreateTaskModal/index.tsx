@@ -3,14 +3,16 @@ import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { SelectPriority } from '@/entities/priority/@x/task';
 import { SelectTagPopup } from '@/entities/tag/@x/task';
+import {
+  type CreateTaskDto,
+  useTaskModalStore,
+  useTaskMutation,
+} from '@/entities/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
-import { type CreateTaskDto } from '../../api/dto/create-task.dto';
-import { useTaskModalStore } from '../../model/task-modal.store';
 import { useCreateTask } from '../../model/useCreateTask';
-import { useTaskMutation } from '../../model/useTaskMutation';
-import styles from './TaskModal.module.css';
+import styles from './CreateTaskModal.module.css';
 
 export const CreateTaskModal = () => {
   const { taskData, closeModal } = useTaskModalStore();
@@ -33,7 +35,7 @@ export const CreateTaskModal = () => {
   );
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(mutateTaskHandler)}>
+    <form className={styles.root} onSubmit={handleSubmit(mutateTaskHandler)}>
       <TransparentInput
         {...register('title')}
         variant="underscore"
