@@ -1,4 +1,5 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
+import { ToggleCompleteTask } from '@/features/toggle-complete-task';
 import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
 import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
@@ -50,7 +51,11 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <TaskCard key={task.id} task={task} />
+                      <TaskCard
+                        key={task.id}
+                        task={task}
+                        optionsSlot={<ToggleCompleteTask task={task} />}
+                      />
                     </div>
                   )}
                 </Draggable>

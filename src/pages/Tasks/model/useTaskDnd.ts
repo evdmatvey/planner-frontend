@@ -1,11 +1,12 @@
 import { DropResult } from '@hello-pangea/dnd';
 import toast from 'react-hot-toast';
-import { useToggleCompleteTask, useUpdateTask } from '@/entities/task';
+import { useToggleCompleteTask } from '@/features/toggle-complete-task';
+import { useUpdateTask } from '@/entities/task';
 import { referenceDateForValue } from '../lib/filter-tasks-by-group';
 import { TaskGroupValue } from './task-groups';
 
 export const useTaskDnd = () => {
-  const { mutate: toggleCompleteTask } = useToggleCompleteTask();
+  const { toggleCompleteTask } = useToggleCompleteTask();
   const { updateTask } = useUpdateTask((data) => {
     toast.success(data?.message as string);
   });
