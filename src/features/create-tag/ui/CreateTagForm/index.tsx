@@ -1,6 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
-import { type CreateTagDto, SelectTagColor } from '@/entities/tag';
+import { type CreateTagDto } from '@/entities/tag';
 import { Button } from '@/shared/ui/Button';
+import { SelectColor } from '@/shared/ui/SelectColor';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
 import { useCreateTag } from '../../model/useCreateTag';
 import styles from './CreateTagForm.module.css';
@@ -30,7 +31,7 @@ export const CreateTagForm = ({ createCallback }: CreateTagFormProps) => {
         control={control}
         name="color"
         render={({ field: { value, onChange } }) => (
-          <SelectTagColor defaultValue={value} onChange={onChange} />
+          <SelectColor defaultValue={value} onChange={onChange} />
         )}
       />
       <Button type="submit" variant="bordered" size="small">

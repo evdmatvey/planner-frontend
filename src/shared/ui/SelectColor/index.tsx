@@ -1,20 +1,17 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Color } from '@/shared/model/color.types';
-import styles from './SelectTagColor.module.css';
+import styles from './SelectColor.module.css';
 
-type TagColor = keyof typeof Color | undefined;
+type ColorState = keyof typeof Color | undefined;
 
-interface SelectTagColorProps {
-  defaultValue: TagColor;
-  onChange: (color: TagColor) => void;
+interface SelectColorProps {
+  defaultValue: ColorState;
+  onChange: (color: ColorState) => void;
 }
 
-export const SelectTagColor = ({
-  defaultValue,
-  onChange,
-}: SelectTagColorProps) => {
-  const [selectedColor, setSelectedColor] = useState<TagColor>(defaultValue);
+export const SelectColor = ({ defaultValue, onChange }: SelectColorProps) => {
+  const [selectedColor, setSelectedColor] = useState<ColorState>(defaultValue);
 
   const transformColorName = (color: Color) => color.toUpperCase();
 
@@ -31,7 +28,7 @@ export const SelectTagColor = ({
     const newSelectedColor =
       selectedColor === transformedColor
         ? undefined
-        : (transformedColor as TagColor);
+        : (transformedColor as ColorState);
 
     onChange(newSelectedColor);
     setSelectedColor(newSelectedColor);

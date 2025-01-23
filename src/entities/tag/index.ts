@@ -6,4 +6,3 @@ export * from './api/tag.queries';
 export * from './api/tag.service';
 export * from './ui/TagBudge';
 export * from './ui/SelectTagPopup';
-export * from './ui/SelectTagColor';
