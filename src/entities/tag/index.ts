@@ -5,4 +5,4 @@ export * from './model/tag.types';
 export * from './api/tag.queries';
 export * from './api/tag.service';
 export * from './ui/TagBudge';
-export * from './ui/SelectOrCreateTagPopup';
+export * from './ui/SelectTagPopup';

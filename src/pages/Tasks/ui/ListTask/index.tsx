@@ -1,12 +1,9 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
-import { SelectOrCreateTagPopup } from '@/entities/tag';
-import {
-  CreateTaskDto,
-  SelectTaskPriority,
-  Task,
-  useDeleteTask,
-} from '@/entities/task';
+import { useDeleteTask } from '@/features/delete-task';
+import { SelectPriority } from '@/entities/priority';
+import { SelectTagPopup } from '@/entities/tag';
+import { type CreateTaskDto, type Task } from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { IconButton } from '@/shared/ui/IconButton';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
@@ -20,7 +17,7 @@ interface ListTaskProps {
 }
 
 export const ListTask = ({ task }: ListTaskProps) => {
-  const { mutate } = useDeleteTask();
+  const { deleteTask } = useDeleteTask();
   const { register, control, watch } = useForm<CreateTaskDto>({
     defaultValues: {
       title: task.title,
@@ -60,11 +57,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
             control={control}
             name="tags"
             render={({ field: { value, onChange } }) => (
-              <SelectOrCreateTagPopup
-                defaultTags={value ?? []}
-                onChange={onChange}
-                withCreate
-              />
+              <SelectTagPopup defaultTags={value ?? []} onChange={onChange} />
             )}
           />
         </div>
@@ -73,14 +66,14 @@ export const ListTask = ({ task }: ListTaskProps) => {
             control={control}
             name="priority"
             render={({ field: { value, onChange } }) => (
-              <SelectTaskPriority defaultPriority={value} onChange={onChange} />
+              <SelectPriority defaultPriority={value} onChange={onChange} />
             )}
           />
         </div>
       </div>
       <IconButton
         className={styles.delete}
-        onClick={() => mutate(task.id)}
+        onClick={() => deleteTask(task.id)}
         icon={<DeleteIcon />}
       />
     </div>

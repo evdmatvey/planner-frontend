@@ -4,9 +4,8 @@
   font-size: 28px;
 }
 
-.form {
-  width: 400px;
+.settings {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 50px;
 }
