@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
-import { TagBadge } from '@/entities/tag';
+import { TagList } from '@/entities/tag/@x/task';
 import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
 import { CheckIcon } from '@/shared/ui/icons/CheckIcon';
@@ -77,13 +77,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
           </div>
         )}
 
-        {tags.length !== 0 && (
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <TagBadge key={tag.id} tag={tag} />
-            ))}
-          </div>
-        )}
+        {tags.length !== 0 && <TagList tags={tags} />}
       </div>
     </>
   );

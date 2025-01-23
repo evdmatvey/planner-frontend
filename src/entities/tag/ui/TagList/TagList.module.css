@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+}
+
+.row {
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.small {
+  gap: 5px;
+}
+
+.medium {
+  gap: 8px;
+}
+
+.tag {
+  cursor: pointer;
+}
