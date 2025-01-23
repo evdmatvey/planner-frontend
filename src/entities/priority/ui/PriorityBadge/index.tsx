@@ -1,23 +1,20 @@
 import clsx from 'clsx';
 import { Color } from '@/shared/model/color.types';
 import { TextedBadge } from '@/shared/ui/Badge';
-import { TaskPriority } from '../../model/task.types';
-import styles from './TaskPriorityBadge.module.css';
+import { Priority } from '../../model/priority.types';
+import styles from './PriorityBadge.module.css';
 
-interface TaskPriorityBadgeProps {
-  priority: keyof typeof TaskPriority;
+interface PriorityBadgeProps {
+  priority: keyof typeof Priority;
   onClick?: () => void;
 }
 
-export const TaskPriorityBadge = ({
-  priority,
-  onClick,
-}: TaskPriorityBadgeProps) => {
+export const PriorityBadge = ({ priority, onClick }: PriorityBadgeProps) => {
   const classes = clsx({
     [styles.root]: onClick,
   });
 
-  const colors: Record<keyof typeof TaskPriority, Color> = {
+  const colors: Record<keyof typeof Priority, Color> = {
     HIGH: Color.RED,
     MEDIUM: Color.BLUE,
     LOW: Color.GREEN,

@@ -8,6 +8,5 @@ export * from './model/useCreateTask';
 export * from './api/task.queries';
 export * from './api/task.service';
 export * from './ui/TaskCard';
-export * from './ui/SelectTaskPriority';
 export * from './ui/TaskModal';
 export * from './ui/TaskOption';

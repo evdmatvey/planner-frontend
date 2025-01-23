@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { type TaskPriority } from './task.types';
+import { type Priority } from './priority.types';
 
-type PriorityState = TaskPriority | undefined;
+type PriorityState = Priority | undefined;
 type SelectCallback = (priority: PriorityState) => void;
 
-export const useSelectTaskPriorityState = (
+export const useSelectPriority = (
   defaultPriority: PriorityState,
   selectCallback: SelectCallback,
 ) => {
   const [selectedPriority, setSelectedPriority] =
     useState<PriorityState>(defaultPriority);
 
-  const selectPriorityHandler = (priority: TaskPriority) => {
+  const selectPriorityHandler = (priority: Priority) => {
     const newSelectedPriority =
       priority === selectedPriority ? undefined : priority;
 

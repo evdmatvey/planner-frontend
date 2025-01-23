@@ -1,10 +1,5 @@
+import { Priority } from '@/entities/priority/model/priority.types';
 import { Tag } from '@/entities/tag/@x/task';
-
-export enum TaskPriority {
-  LOW = 'LOW',
-  MEDIUM = 'MEDIUM',
-  HIGH = 'HIGH',
-}
 
 export interface Task {
   id: string;
@@ -14,6 +9,6 @@ export interface Task {
   tags: Tag[];
   updatedAt?: string;
   description?: string;
-  priority?: TaskPriority;
+  priority?: Priority;
   executionTime?: number;
 }

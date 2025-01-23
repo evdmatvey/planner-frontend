@@ -1,8 +1,9 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import { useDeleteTask } from '@/features/delete-task';
+import { SelectPriority } from '@/entities/priority';
 import { SelectTagPopup } from '@/entities/tag';
-import { CreateTaskDto, SelectTaskPriority, Task } from '@/entities/task';
+import { type CreateTaskDto, type Task } from '@/entities/task';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { IconButton } from '@/shared/ui/IconButton';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
@@ -65,7 +66,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
             control={control}
             name="priority"
             render={({ field: { value, onChange } }) => (
-              <SelectTaskPriority defaultPriority={value} onChange={onChange} />
+              <SelectPriority defaultPriority={value} onChange={onChange} />
             )}
           />
         </div>

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { type ReactNode, useRef } from 'react';
+import { PriorityBadge } from '@/entities/priority/@x/task';
 import { TagList } from '@/entities/tag/@x/task';
 import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
@@ -9,7 +10,6 @@ import { useTaskModalStore } from '../../model/task-modal.store';
 import { Task } from '../../model/task.types';
 import { TaskExecutionTime } from '../TaskExecutionTime';
 import { TaskOption } from '../TaskOption';
-import { TaskPriorityBadge } from '../TaskPriorityBadge';
 import styles from './TaskCard.module.css';
 
 interface TaskCardProps {
@@ -51,7 +51,7 @@ export const TaskCard = ({ task, optionsSlot }: TaskCardProps) => {
         </div>
         {(priority || executionTime) && (
           <div className={styles.info}>
-            {priority && <TaskPriorityBadge priority={priority} />}
+            {priority && <PriorityBadge priority={priority} />}
             {executionTime && (
               <TaskExecutionTime executionTime={executionTime} />
             )}
