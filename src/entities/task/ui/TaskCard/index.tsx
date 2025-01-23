@@ -4,12 +4,9 @@ import { PriorityBadge } from '@/entities/priority/@x/task';
 import { TagList } from '@/entities/tag/@x/task';
 import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
-import { EditIcon } from '@/shared/ui/icons/EditIcon';
 import { OptionsIcon } from '@/shared/ui/icons/OptionsIcon';
-import { useTaskModalStore } from '../../model/task-modal.store';
 import { Task } from '../../model/task.types';
 import { TaskExecutionTime } from '../TaskExecutionTime';
-import { TaskOption } from '../TaskOption';
 import styles from './TaskCard.module.css';
 
 interface TaskCardProps {
@@ -20,29 +17,23 @@ interface TaskCardProps {
 export const TaskCard = ({ task, optionsSlot }: TaskCardProps) => {
   const { isCompleted, title, description, priority, executionTime, tags } =
     task;
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
   const { isOpen, togglePopupHandler } = usePopup(ref);
-  const { openUpdateModal, setTaskData } = useTaskModalStore();
   const classes = clsx(styles.root, {
     [styles.completed]: isCompleted,
   });
 
-  const updateTaskHandler = () => {
-    setTaskData({ ...task });
-    openUpdateModal();
-    togglePopupHandler();
-  };
-
   return (
     <>
-      <div className={classes} ref={ref}>
-        <button className={styles.options} onClick={togglePopupHandler}>
+      <div className={classes}>
+        <button
+          ref={ref}
+          className={styles.options}
+          onClick={togglePopupHandler}
+        >
           <OptionsIcon />
         </button>
         <AnimatedPopup className={styles.popup} isOpen={isOpen}>
-          <TaskOption onClick={updateTaskHandler}>
-            <EditIcon /> Редактировать
-          </TaskOption>
           {optionsSlot}
         </AnimatedPopup>
         <div className={styles.text}>

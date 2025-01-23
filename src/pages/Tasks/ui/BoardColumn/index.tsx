@@ -1,6 +1,7 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { DeleteTaskOption } from '@/features/delete-task';
 import { ToggleCompleteTask } from '@/features/toggle-complete-task';
+import { UpdateTaskOption } from '@/features/update-task';
 import { Task, TaskCard, useTaskModalStore } from '@/entities/task';
 import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
@@ -57,6 +58,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
                         task={task}
                         optionsSlot={
                           <>
+                            <UpdateTaskOption task={task} />
                             <ToggleCompleteTask task={task} />
                             <DeleteTaskOption id={task.id} />
                           </>

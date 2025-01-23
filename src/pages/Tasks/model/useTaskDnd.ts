@@ -1,7 +1,7 @@
 import { DropResult } from '@hello-pangea/dnd';
 import toast from 'react-hot-toast';
 import { useToggleCompleteTask } from '@/features/toggle-complete-task';
-import { useUpdateTask } from '@/entities/task';
+import { useUpdateTask } from '@/features/update-task';
 import { referenceDateForValue } from '../lib/filter-tasks-by-group';
 import { TaskGroupValue } from './task-groups';
 

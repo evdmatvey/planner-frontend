@@ -1,12 +1,16 @@
 import { AnimatePresence, m } from 'framer-motion';
+import { type ReactNode } from 'react';
 import { IconButton } from '@/shared/ui/IconButton';
 import { CloseIcon } from '@/shared/ui/icons/CloseIcon';
 import { useTaskModalStore } from '../../model/task-modal.store';
 import { CreateTaskModal } from './CreateTaskModal';
 import styles from './TaskModal.module.css';
-import { UpdateTaskModal } from './UpdateTaskModal';
 
-export const TaskModal = () => {
+interface TaskModalProps {
+  updateModal: ReactNode;
+}
+
+export const TaskModal = ({ updateModal }: TaskModalProps) => {
   const { modalVariant, isModalOpen, closeModal } = useTaskModalStore();
   const isCreateTaskModal = modalVariant === 'create';
 
@@ -27,7 +31,7 @@ export const TaskModal = () => {
           <h3 className={styles.title}>
             {isCreateTaskModal ? 'Создание задачи' : 'Обновление задачи'}
           </h3>
-          {isCreateTaskModal ? <CreateTaskModal /> : <UpdateTaskModal />}
+          {isCreateTaskModal ? <CreateTaskModal /> : updateModal}
         </m.div>
       )}
     </AnimatePresence>

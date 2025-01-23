@@ -1,16 +1,18 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { SelectPriority } from '@/entities/priority/@x/task';
-import { SelectTagPopup } from '@/entities/tag/@x/task';
+import { SelectPriority } from '@/entities/priority';
+import { SelectTagPopup } from '@/entities/tag';
+import {
+  type UpdateTaskDto,
+  useTaskModalStore,
+  useTaskMutation,
+} from '@/entities/task';
 import { Button } from '@/shared/ui/Button';
 import { DatePicker } from '@/shared/ui/DatePicker';
 import { TransparentInput } from '@/shared/ui/TransparentInput';
-import { type UpdateTaskDto } from '../../api/dto/update-task.dto';
-import { useTaskModalStore } from '../../model/task-modal.store';
-import { useTaskMutation } from '../../model/useTaskMutation';
 import { useUpdateTask } from '../../model/useUpdateTask';
-import styles from './TaskModal.module.css';
+import styles from './UpdateTaskModal.module.css';
 
 export const UpdateTaskModal = () => {
   const { taskData, closeModal } = useTaskModalStore();
@@ -36,7 +38,7 @@ export const UpdateTaskModal = () => {
   );
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(mutateTaskHandler)}>
+    <form className={styles.root} onSubmit={handleSubmit(mutateTaskHandler)}>
       <TransparentInput
         {...register('title')}
         variant="underscore"
