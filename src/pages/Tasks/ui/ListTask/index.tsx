@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import { useDeleteTask } from '@/features/delete-task';
+import { ExecutionTimeInput } from '@/entities/execution-time';
 import { SelectPriority } from '@/entities/priority';
 import { SelectTagPopup } from '@/entities/tag';
 import { type CreateTaskDto, type Task } from '@/entities/task';
@@ -25,6 +26,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
       createdAt: task.createdAt,
       tags: task.tags,
       priority: task.priority,
+      executionTime: task.executionTime,
     },
   });
 
@@ -35,10 +37,25 @@ export const ListTask = ({ task }: ListTaskProps) => {
       <IconButton className={styles.move} icon={<MoveIcon />} />
       <div className={styles.content}>
         <div className={styles.cell}>
-          <TransparentInput {...register('title')} />
+          <TransparentInput placeholder="Название" {...register('title')} />
         </div>
         <div className={styles.cell}>
-          <TransparentInput {...register('description')} />
+          <TransparentInput
+            placeholder="Описание"
+            {...register('description')}
+          />
+        </div>
+        <div className={styles.cell}>
+          <Controller
+            control={control}
+            name="executionTime"
+            render={({ field: { value, onChange } }) => (
+              <ExecutionTimeInput
+                onChange={onChange}
+                defaultExecutionTime={value}
+              />
+            )}
+          />
         </div>
         <div className={styles.cell}>
           <Controller

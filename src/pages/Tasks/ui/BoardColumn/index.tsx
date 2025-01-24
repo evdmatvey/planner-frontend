@@ -24,7 +24,7 @@ export const BoardColumn = ({ group, tasks }: BoardColumnProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
+        <GroupTitle title={group.label} tasks={filteredTasks} />
         {group.value !== 'completed' && (
           <AddTaskButton referenceDate={referenceDate} />
         )}

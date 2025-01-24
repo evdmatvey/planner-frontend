@@ -33,7 +33,7 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
 
   return (
     <div className={styles.root}>
-      <GroupTitle title={group.label} elementsCount={filteredTasks.length} />
+      <GroupTitle title={group.label} tasks={filteredTasks} />
       <Droppable droppableId={group.value}>
         {(provided) => (
           <div

@@ -34,7 +34,7 @@ export const useListTaskMutation = ({
   );
 
   useEffect(() => {
-    const { unsubscribe } = watch((dto: CreateTaskDto) => {
+    const { unsubscribe } = watch((dto) => {
       const transformedDto = cleanDto({
         ...dto,
         title: dto.title ?? '',
@@ -48,7 +48,6 @@ export const useListTaskMutation = ({
       }
     });
 
-    //@ts-expect-error because unsubscribe type really is not never
     return () => unsubscribe();
   }, [watch(), debouncedUpdateTask, debouncedCreateTask]);
 };
