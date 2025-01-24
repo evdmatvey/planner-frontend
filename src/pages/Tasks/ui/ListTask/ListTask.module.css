@@ -5,6 +5,10 @@
   border-radius: var(--border-r-xs);
 }
 
+.completed {
+  opacity: 0.5;
+}
+
 .content {
   width: 100%;
   display: grid;
