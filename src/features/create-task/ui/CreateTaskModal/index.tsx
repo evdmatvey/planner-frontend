@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { ExecutionTimeInput } from '@/entities/execution-time';
 import { SelectPriority } from '@/entities/priority/@x/task';
 import { SelectTagPopup } from '@/entities/tag/@x/task';
 import {
@@ -45,6 +46,17 @@ export const CreateTaskModal = () => {
         {...register('description')}
         variant="underscore"
         placeholder="Описание"
+      />
+      <Controller
+        control={control}
+        name="executionTime"
+        render={({ field: { value, onChange } }) => (
+          <ExecutionTimeInput
+            variant="underscore"
+            onChange={onChange}
+            defaultExecutionTime={value}
+          />
+        )}
       />
       <Controller
         control={control}
