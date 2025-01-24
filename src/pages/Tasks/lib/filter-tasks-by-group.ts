@@ -18,7 +18,7 @@ export const referenceDateForValue: Omit<
   today: dayjs().startOf('date'),
   tomorrow: dayjs().add(1, 'day').startOf('day'),
   'on-this-week': dayjs().endOf('isoWeek'),
-  later: dayjs().add(1, 'week').startOf('day'),
+  later: dayjs().add(1, 'week').startOf('isoWeek'),
 };
 
 export const getReferenceISODateByValue = (value: TaskGroupValue) => {
