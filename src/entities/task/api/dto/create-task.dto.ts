@@ -1,11 +1,11 @@
+import { Priority } from '@/entities/priority/model/priority.types';
 import { Tag } from '@/entities/tag/@x/task';
-import { TaskPriority } from '../../model/task.types';
 
 export interface CreateTaskDto {
   title: string;
   description?: string;
   createdAt?: string;
   executionTime?: number;
-  priority?: TaskPriority;
+  priority?: Priority;
   tags?: Tag[];
 }
