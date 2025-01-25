@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
 import { useDeleteTask } from '@/features/delete-task';
@@ -19,6 +20,10 @@ interface ListTaskProps {
 
 export const ListTask = ({ task }: ListTaskProps) => {
   const { deleteTask } = useDeleteTask();
+  const classes = clsx(styles.root, {
+    [styles.completed]: task.isCompleted,
+  });
+
   const { register, control, watch } = useForm<CreateTaskDto>({
     defaultValues: {
       title: task.title,
@@ -33,7 +38,7 @@ export const ListTask = ({ task }: ListTaskProps) => {
   useListTaskMutation({ watch, itemId: task.id });
 
   return (
-    <div className={styles.root}>
+    <div className={classes}>
       <IconButton className={styles.move} icon={<MoveIcon />} />
       <div className={styles.content}>
         <div className={styles.cell}>

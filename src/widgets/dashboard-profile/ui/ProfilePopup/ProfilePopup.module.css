@@ -6,7 +6,21 @@
   top: 46px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   border-radius: var(--border-r-xs);
   background: var(--popup-background);
   z-index: 10;
+}
+
+.link {
+  font-size: 16px;
+  text-align: center;
+  color: var(--color-gray);
+  transition: color 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--color-gray-light);
+  }
 }

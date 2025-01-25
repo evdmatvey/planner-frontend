@@ -1,0 +1,51 @@
+.root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 500px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  border-radius: var(--border-r-m);
+  background: var(--foreground);
+}
+
+.title {
+  margin-bottom: 10px;
+  color: var(--text-light);
+}
+
+.desc {
+  font-size: 18px;
+  color: var(--color-gray);
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  rotate: 45deg;
+}
+
+.link {
+  padding: 10px 30px;
+  color: var(--text-light);
+  font-size: 18px;
+  border-radius: var(--border-r-m);
+  background: var(--color-accent);
+  align-self: center;
+  transition: background 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    background: var(--color-accent-dark);
+  }
+}
