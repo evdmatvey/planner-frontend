@@ -1,0 +1,22 @@
+.header {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--content-background);
+}
+
+.link {
+  padding: 8px 20px;
+  font-size: 18px;
+  color: var(--text-light);
+  border-radius: var(--border-r-s);
+  background: var(--color-accent);
+  transition: background 0.15s ease-in;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    background: var(--color-accent-dark);
+  }
+}
