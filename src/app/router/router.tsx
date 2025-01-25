@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import { Login } from '@/pages/Auth';
 import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
+import { NotFound } from '@/pages/NotFound';
 import { Settings } from '@/pages/Settings';
 import { Tasks } from '@/pages/Tasks';
 import { DashboardProfile } from '@/widgets/dashboard-profile';
@@ -52,5 +53,9 @@ export const router = createBrowserRouter([
         element: <Settings />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ]);
