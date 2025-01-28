@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Library-react-blue?style=flat" alt="Library-react"/>
-  <img src="https://img.shields.io/badge/Version-0.0.1_(Alpha)-purple?style=flat" alt="Version-0.0.1(Alpha)"/>
+  <img src="https://img.shields.io/badge/Version-1.0.0-purple?style=flat" alt="Version-1.0.0"/>
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat" alt="License-MIT"/>
 </p>
 
