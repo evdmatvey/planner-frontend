@@ -1,0 +1,17 @@
+.calendar {
+  width: 1060px;
+}
+
+.tooltip {
+  padding: 10px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--border-r-xs);
+  background: var(--popup-background);
+}
+
+.date {
+  color: var(--color-gray);
+}
