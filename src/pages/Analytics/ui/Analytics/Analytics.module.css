@@ -1,0 +1,18 @@
+.root {
+  height: calc(100vh - 60px - 36px);
+  padding-right: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  font-size: 20px;
+}
+
+.analytic {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

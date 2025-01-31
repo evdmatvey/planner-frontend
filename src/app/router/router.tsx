@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router';
+import { Analytics } from '@/pages/Analytics';
 import { Login } from '@/pages/Auth';
 import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: routesConfig.SETTINGS,
         element: <Settings />,
+      },
+      {
+        path: routesConfig.ANALYTICS,
+        element: <Analytics />,
       },
     ],
   },
