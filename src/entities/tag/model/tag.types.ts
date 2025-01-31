@@ -4,4 +4,5 @@ export interface Tag {
   id: string;
   title: string;
   color: keyof typeof Color;
+  tasks?: [];
 }

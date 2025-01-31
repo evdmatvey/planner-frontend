@@ -9,13 +9,19 @@ import {
 } from './dto/tag.response';
 import { UpdateTagDto } from './dto/update-tag.dto';
 
+// TODO: find a better way to fix task create / update tags error
+
 class TagService {
   private readonly _baseUrl = '/tags';
 
   public async getAll() {
     const response = await requesterWithAuth.get<TagsResponse>(this._baseUrl);
 
-    return response.data.tags;
+    // hack to fix update / create tasks error
+    // eslint-disable-next-line
+    const tagsWithoutTasks = response.data.tags.map(({ tasks, ...tag }) => tag);
+
+    return tagsWithoutTasks;
   }
 
   public async getOne(id: string) {
