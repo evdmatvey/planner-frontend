@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { analyticsQueries } from '@/entities/analytics';
 import { getDatesArray } from '@/shared/lib/get-dates-array';
+import { getDateFromString } from '@/shared/lib/getDateFromString';
 
 export const useGetYearTasksActivities = () => {
   const { data: tasksAnalytics } = useQuery(analyticsQueries.task());
@@ -13,8 +14,8 @@ export const useGetYearTasksActivities = () => {
 
     const analyticsMap = new Map(
       tasksAnalytics?.map((item) => [
-        dayjs(item.date, 'DD.MM.YYYY').format('YYYY-MM-DD'),
-        item.tasks.all.count,
+        dayjs(getDateFromString(item.date)).format('YYYY-MM-DD'),
+        item.tasks.completed.count,
       ]) || [],
     );
 
