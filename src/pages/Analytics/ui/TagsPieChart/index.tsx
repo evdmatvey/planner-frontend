@@ -9,6 +9,7 @@ import {
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { analyticsQueries } from '@/entities/analytics';
+import { reduceTasksInfoByGroup } from '../../lib/reduce-tasks-info-by-group';
 import { chartColors } from '../../model/chart-colors.data';
 import styles from './TagsChart.module.css';
 
@@ -29,16 +30,14 @@ const options: ChartOptions<'pie'> = {
 export const TagsPieChart = () => {
   const { data: tagAnalytics } = useQuery(analyticsQueries.tag());
 
-  console.log(tagAnalytics);
-
   const data: ChartData<'pie'> = {
     labels: tagAnalytics?.map((tag) => tag.title),
     datasets: [
       {
         label: 'Кол-во задач',
         data:
-          tagAnalytics?.map((tag) =>
-            tag.tasks.reduce((acc, data) => acc + data.tasks.all.count, 0),
+          tagAnalytics?.map(
+            (tag) => reduceTasksInfoByGroup(tag.tasks, 'all').count,
           ) || [],
         backgroundColor: tagAnalytics?.map(
           (tag) => chartColors[tag.color].backgroundColor,
