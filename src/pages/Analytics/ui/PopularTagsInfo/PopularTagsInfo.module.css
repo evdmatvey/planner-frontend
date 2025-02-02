@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.tag {
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: var(--border-r-m);
+  background: var(--foreground);
+  transition: transform 0.15s ease-in-out;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title,
+.value {
+  font-size: 14px;
+}
+
+.value {
+  color: var(--color-gray);
+}
+
+@media (hover: hover) {
+  .tag:hover {
+    transform: translateY(-10px);
+  }
+}
