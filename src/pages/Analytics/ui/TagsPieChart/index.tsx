@@ -1,48 +1,37 @@
-import { useQuery } from '@tanstack/react-query';
 import {
   ArcElement,
   ChartData,
   Chart as ChartJS,
-  ChartOptions,
   Legend,
   Tooltip,
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { analyticsQueries } from '@/entities/analytics';
+import { type TagAnalytics } from '@/entities/analytics';
+import { pieChartOptions } from '@/shared/config/charts/pie-chart.config';
 import { reduceTasksInfoByGroup } from '../../lib/reduce-tasks-info-by-group';
 import { chartColors } from '../../model/chart-colors.data';
-import styles from './TagsChart.module.css';
+import styles from './TagsPieChart.module.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const options: ChartOptions<'pie'> = {
-  plugins: {
-    legend: {
-      position: 'bottom',
-      align: 'center',
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-};
+interface TagsPieChartProps {
+  tagsAnalytics: TagAnalytics[];
+}
 
-export const TagsPieChart = () => {
-  const { data: tagAnalytics } = useQuery(analyticsQueries.tag());
-
+export const TagsPieChart = ({ tagsAnalytics }: TagsPieChartProps) => {
   const data: ChartData<'pie'> = {
-    labels: tagAnalytics?.map((tag) => tag.title),
+    labels: tagsAnalytics?.map((tag) => tag.title),
     datasets: [
       {
         label: 'Кол-во задач',
         data:
-          tagAnalytics?.map(
+          tagsAnalytics?.map(
             (tag) => reduceTasksInfoByGroup(tag.tasks, 'all').count,
           ) || [],
-        backgroundColor: tagAnalytics?.map(
+        backgroundColor: tagsAnalytics?.map(
           (tag) => chartColors[tag.color].backgroundColor,
         ),
-        borderColor: tagAnalytics?.map(
+        borderColor: tagsAnalytics?.map(
           (tag) => chartColors[tag.color].borderColor,
         ),
         borderWidth: 1,
@@ -52,7 +41,7 @@ export const TagsPieChart = () => {
 
   return (
     <div className={styles.root}>
-      <Pie data={data} options={options} />
+      <Pie data={data} options={pieChartOptions} />
     </div>
   );
 };
