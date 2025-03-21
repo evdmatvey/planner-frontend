@@ -7,10 +7,19 @@ import styles from './ProfilePopup.module.css';
 
 interface ProfilePopupProps {
   isOpen: boolean;
+  closePopupHandler: () => void;
 }
 
-export const ProfilePopup = ({ isOpen }: ProfilePopupProps) => {
-  const { mutate } = useLogout();
+export const ProfilePopup = ({
+  isOpen,
+  closePopupHandler,
+}: ProfilePopupProps) => {
+  const { mutate: logout } = useLogout();
+
+  const logoutHandler = () => {
+    logout();
+    closePopupHandler();
+  };
 
   return (
     <AnimatePresence>
@@ -21,14 +30,18 @@ export const ProfilePopup = ({ isOpen }: ProfilePopupProps) => {
           initial={{ y: -20, opacity: 0 }}
           exit={{ y: -20, opacity: 0 }}
         >
-          <Link to={routesConfig.DASHBOARD} className={styles.link}>
+          <Link
+            to={routesConfig.DASHBOARD}
+            className={styles.link}
+            onClick={closePopupHandler}
+          >
             Личный кабинет
           </Link>
           <Button
             color="secondary"
             variant="bordered"
             size="small"
-            onClick={() => mutate()}
+            onClick={logoutHandler}
           >
             Выйти
           </Button>
