@@ -16,6 +16,10 @@ export class AccessTokenStorage {
   }
 
   public static removeToken() {
-    Cookies.remove(Tokens.ACCESS_TOKEN);
+    Cookies.remove(Tokens.ACCESS_TOKEN, {
+      domain: import.meta.env.VITE_DOMAIN,
+      sameSite: 'strict',
+      expires: +import.meta.env.VITE_ACCESS_TOKEN_EXPIRES,
+    });
   }
 }
