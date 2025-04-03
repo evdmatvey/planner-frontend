@@ -1,5 +1,11 @@
 .calendar {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.calendar svg {
   width: 1060px;
+  flex-shrink: 0;
 }
 
 .tooltip {
@@ -14,4 +20,113 @@
 
 .date {
   color: var(--color-gray);
+}
+
+@media (width <= 1440px) {
+  .calendar {
+    width: 900px;
+  }
+
+  .calendar.expended {
+    width: 1060px;
+  }
+}
+
+@media (width <= 1270px) {
+  .calendar {
+    width: 800px;
+  }
+}
+
+@media (width <= 1200px) {
+  .calendar.expended {
+    width: 900px;
+  }
+}
+
+@media (width <= 1170px) {
+  .calendar {
+    width: 750px;
+  }
+}
+
+@media (width <= 1050px) {
+  .calendar.expended {
+    width: 750px;
+  }
+}
+
+@media (width <= 1120px) {
+  .calendar {
+    width: 650px;
+  }
+}
+
+@media (width <=1020px) {
+  .calendar {
+    width: 550px;
+  }
+}
+
+@media (width <=900px) {
+  .calendar.expended {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (width <=920px) {
+  .calendar {
+    margin: 0 auto;
+    width: 450px;
+  }
+}
+
+@media (width <=900px) {
+  .calendar.expended {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (width <=820px) {
+  .calendar {
+    margin: 0 auto;
+    width: 350px;
+  }
+}
+
+@media (width <=720px) {
+  .calendar.expended {
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (width <=720px) {
+  .calendar {
+    margin: 0 auto;
+    width: 300px;
+  }
+}
+
+@media (width <=670px) {
+  .calendar {
+    margin: 0 auto;
+    width: 250px;
+  }
+}
+
+@media (width <=620px) {
+  .calendar {
+    margin: 0 auto;
+    width: 200px;
+  }
+}
+
+@media (width <=620px) {
+  .calendar.expended {
+    width: 400px;
+    margin: 0 auto;
+  }
 }
