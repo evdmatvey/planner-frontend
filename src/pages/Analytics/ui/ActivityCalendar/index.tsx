@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import { useState } from 'react';
+import { useDashboardSidebarStore } from '@/widgets/dashboard-sidebar';
 import { getTasksCompletedCountText } from '../../lib/get-tasks-completed-count-text';
 import { useGetYearTasksActivities } from '../../model/useGetYearTasksActivities';
 import {
@@ -16,6 +18,11 @@ interface TooltipState {
 
 export const ActivityCalendar = () => {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+
+  const { isCollapsed } = useDashboardSidebarStore();
+  const calendarClasses = clsx(styles.calendar, {
+    [styles.expended]: isCollapsed,
+  });
 
   const { tasksActivities } = useGetYearTasksActivities();
   const { weeklyTasksActivities } =
@@ -36,8 +43,8 @@ export const ActivityCalendar = () => {
   };
 
   return (
-    <>
-      <svg className={styles.calendar}>
+    <div className={calendarClasses}>
+      <svg>
         {weeklyTasksActivities.map((week, i) => (
           <g transform={`translate(${i * 20}, 0)`} key={week.weekNumber}>
             {week.days.map(
@@ -76,6 +83,6 @@ export const ActivityCalendar = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+import { useDashboardSidebarStore } from '@/widgets/dashboard-sidebar';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { useUpdateProfile } from '../../model/useUpdateProfile';
@@ -5,12 +7,17 @@ import { SettingsItemTitle } from '../SettingsItemTitle';
 import styles from './UpdateProfileForm.module.css';
 
 export const UpdateProfileForm = () => {
+  const { isCollapsed } = useDashboardSidebarStore();
   const { errors, onSubmit, register } = useUpdateProfile();
+
+  const classes = clsx(styles.form, {
+    [styles.expanded]: isCollapsed,
+  });
 
   return (
     <div className={styles.root}>
       <SettingsItemTitle text="Настройки профиля" />
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={classes} onSubmit={onSubmit}>
         <Input
           register={register('email', {
             required: 'Укажите email!',

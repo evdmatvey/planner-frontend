@@ -3,11 +3,16 @@
 }
 
 .content {
-  width: 100%;
+  width: calc(100vw - 300px);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-x: auto;
+}
+
+.content.full {
+  width: calc(100vw - 60px);
 }
 
 .profile {

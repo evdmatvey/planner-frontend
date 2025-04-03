@@ -8,6 +8,7 @@ import { Settings } from '@/pages/Settings';
 import { Tasks } from '@/pages/Tasks';
 import { DashboardProfile } from '@/widgets/dashboard-profile';
 import { DashboardSidebar } from '@/widgets/dashboard-sidebar';
+import { useDashboardSidebarStore } from '@/widgets/dashboard-sidebar';
 import { routesConfig } from '@/shared/config/routes';
 import { DashboardLayout } from '@/shared/ui/DashboardLayout';
 import { ProtectedRoute } from './ProtectedRoute';
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <DashboardLayout
+          useSidebarStore={useDashboardSidebarStore}
           sidebarSlot={<DashboardSidebar />}
           profileSlot={<DashboardProfile />}
         />

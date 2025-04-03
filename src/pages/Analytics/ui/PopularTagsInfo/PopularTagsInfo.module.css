@@ -1,6 +1,7 @@
 .root {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -39,5 +40,11 @@
 @media (hover: hover) {
   .tag:hover {
     transform: translateY(-10px);
+  }
+}
+
+@media (width <=1000px) {
+  .root {
+    justify-content: center;
   }
 }

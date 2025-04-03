@@ -10,3 +10,19 @@
   flex-direction: column;
   gap: 10px;
 }
+
+@media (width <=750px) {
+  .form {
+    width: 300px;
+  }
+
+  .form.expanded {
+    width: 400px;
+  }
+}
+
+@media (width <=650px) {
+  .form {
+    width: 250px;
+  }
+}

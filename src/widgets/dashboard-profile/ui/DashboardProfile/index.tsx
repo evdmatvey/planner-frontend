@@ -27,7 +27,7 @@ export const DashboardProfile = () => {
           </span>
         </div>
       </div>
-      <ProfilePopup isOpen={isOpen} />
+      <ProfilePopup isOpen={isOpen} closePopupHandler={togglePopupHandler} />
     </div>
   );
 };
