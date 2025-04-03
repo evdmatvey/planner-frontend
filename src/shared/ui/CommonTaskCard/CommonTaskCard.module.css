@@ -8,7 +8,7 @@
   background: var(--content-background);
 }
 
-.completed {
+.completed .text {
   opacity: 0.5;
 }
 
@@ -38,13 +38,6 @@
   gap: 10px;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 7px;
-}
-
 .options {
   width: 20px;
   height: 20px;
@@ -55,6 +48,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1;
 }
 
 .options svg {
