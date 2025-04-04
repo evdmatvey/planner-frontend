@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
+import Turnstile, { useTurnstile } from 'react-turnstile';
 import { RegisterDto, authService } from '@/entities/auth';
 import { routesConfig } from '@/shared/config/routes';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
@@ -18,6 +20,18 @@ export const Register = () => {
     formState: { errors },
   } = useForm<RegisterDto>({ mode: 'onChange' });
   const navigate = useNavigate();
+  const [captchaToken, setCaptchaToken] = useState('');
+  const turnstile = useTurnstile();
+  const isButtonDisabled = import.meta.env.DEV ? false : !captchaToken;
+
+  const handleVerify = (token: string) => {
+    setCaptchaToken(token);
+  };
+
+  const resetCaptcha = () => {
+    setCaptchaToken('');
+    turnstile.reset();
+  };
 
   const loginHandler = async (dto: RegisterDto) => {
     try {
@@ -30,6 +44,8 @@ export const Register = () => {
       navigate(routesConfig.TASKS);
     } catch (error) {
       toastifyError(getErrorMessage(error));
+    } finally {
+      resetCaptcha();
     }
   };
 
@@ -88,7 +104,14 @@ export const Register = () => {
           placeholder="Повторите пароль"
           error={errors.passwordRepeat?.message}
         />
-        <Button>Зарегистрироваться</Button>
+        {!import.meta.env.DEV && (
+          <Turnstile
+            sitekey={import.meta.env.VITE_SITE_KEY}
+            onVerify={handleVerify}
+            theme="dark"
+          />
+        )}
+        <Button disabled={isButtonDisabled}>Зарегистрироваться</Button>
       </AuthLayout.Form>
       <AuthLayout.Caption>
         Уже есть аккаунт?&nbsp;
