@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
-import Turnstile, { useTurnstile } from 'react-turnstile';
+import Turnstile from 'react-turnstile';
 import { RegisterDto, authService } from '@/entities/auth';
 import { routesConfig } from '@/shared/config/routes';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
@@ -21,7 +21,6 @@ export const Register = () => {
   } = useForm<RegisterDto>({ mode: 'onChange' });
   const navigate = useNavigate();
   const [captchaToken, setCaptchaToken] = useState('');
-  const turnstile = useTurnstile();
   const isButtonDisabled = import.meta.env.DEV ? false : !captchaToken;
 
   const handleVerify = (token: string) => {
@@ -30,7 +29,6 @@ export const Register = () => {
 
   const resetCaptcha = () => {
     setCaptchaToken('');
-    turnstile.reset();
   };
 
   const loginHandler = async (dto: RegisterDto) => {
