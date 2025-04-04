@@ -33,6 +33,10 @@
   background-color: var(--color-accent);
 }
 
+.solid.primary:disabled {
+  background-color: var(--color-gray-dark);
+}
+
 .bordered.primary {
   border-color: var(--color-accent);
   color: var(--color-accent);
@@ -50,6 +54,10 @@
 @media (hover: hover) {
   .solid.primary:hover {
     background-color: var(--color-accent-dark);
+  }
+
+  .solid.primary:disabled {
+    background-color: var(--color-gray-dark);
   }
 
   .bordered.primary:hover {

@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
+import Turnstile, { useTurnstile } from 'react-turnstile';
 import { LoginDto, authService } from '@/entities/auth';
 import { routesConfig } from '@/shared/config/routes';
 import { getErrorMessage } from '@/shared/lib/get-error-message';
@@ -17,11 +19,24 @@ export const Login = () => {
     formState: { errors },
   } = useForm<LoginDto>({ mode: 'onChange' });
   const navigate = useNavigate();
+  const [captchaToken, setCaptchaToken] = useState('');
+  const turnstile = useTurnstile();
+  const isButtonDisabled = import.meta.env.DEV ? false : !captchaToken;
+
+  const handleVerify = (token: string) => {
+    setCaptchaToken(token);
+  };
+
+  const resetCaptcha = () => {
+    setCaptchaToken('');
+    turnstile.reset();
+  };
 
   const loginHandler = async (dto: LoginDto) => {
     try {
       const { message } = await authService.login({
         ...dto,
+        captchaToken,
       });
 
       toast.success(message);
@@ -29,6 +44,8 @@ export const Login = () => {
       navigate(routesConfig.TASKS);
     } catch (error) {
       toastifyError(getErrorMessage(error));
+    } finally {
+      resetCaptcha();
     }
   };
 
@@ -65,7 +82,14 @@ export const Login = () => {
           placeholder="Пароль"
           error={errors.password?.message}
         />
-        <Button>Войти</Button>
+        {!import.meta.env.DEV && (
+          <Turnstile
+            sitekey={import.meta.env.VITE_SITE_KEY}
+            onVerify={handleVerify}
+            theme="dark"
+          />
+        )}
+        <Button disabled={isButtonDisabled}>Войти</Button>
       </AuthLayout.Form>
       <AuthLayout.Caption>
         Ещё нет аккаунта?&nbsp;
