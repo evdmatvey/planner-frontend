@@ -130,3 +130,17 @@
     margin: 0 auto;
   }
 }
+
+@media (width <=510px) {
+  .calendar,
+  .calendar.expended {
+    width: 400px;
+  }
+}
+
+@media (width <=420px) {
+  .calendar,
+  .calendar.expended {
+    width: 300px;
+  }
+}
