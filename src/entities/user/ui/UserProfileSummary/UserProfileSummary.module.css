@@ -1,0 +1,66 @@
+.root {
+  display: flex;
+  align-items: center;
+}
+
+.root.small {
+  gap: 5px;
+  font-size: 14px;
+}
+
+.root.medium {
+  gap: 10px;
+  font-size: 18px;
+}
+
+.root.large {
+  gap: 10px;
+  font-size: 24px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-accent);
+  font-weight: 800;
+  border-radius: 50%;
+  background: var(--background);
+  flex-shrink: 0;
+}
+
+.root.small .avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+}
+
+.root.medium .avatar {
+  width: 42px;
+  height: 42px;
+  font-size: 30px;
+}
+
+.root.large .avatar {
+  width: 52px;
+  height: 52px;
+  font-size: 40px;
+}
+
+.username {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.root.small .username {
+  width: 150px;
+}
+
+.root.medium .username {
+  width: 200px;
+}
+
+.root.large .username {
+  width: 250px;
+}

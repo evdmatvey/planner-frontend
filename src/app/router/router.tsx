@@ -6,6 +6,7 @@ import { Home } from '@/pages/Home';
 import { NotFound } from '@/pages/NotFound';
 import { Settings } from '@/pages/Settings';
 import { Tasks } from '@/pages/Tasks';
+import { DashboardDrawer } from '@/widgets/dashboard-drawer';
 import { DashboardProfile } from '@/widgets/dashboard-profile';
 import { DashboardSidebar } from '@/widgets/dashboard-sidebar';
 import { useDashboardSidebarStore } from '@/widgets/dashboard-sidebar';
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
           useSidebarStore={useDashboardSidebarStore}
           sidebarSlot={<DashboardSidebar />}
           profileSlot={<DashboardProfile />}
+          drawerSlot={<DashboardDrawer />}
         />
       </ProtectedRoute>
     ),

@@ -9,7 +9,7 @@ import { toastifyError } from '@/shared/lib/toastify-error';
 export const useLogout = () => {
   const navigate = useNavigate();
 
-  const { mutate } = useMutation({
+  const { mutate: logout } = useMutation({
     mutationKey: ['logout'],
     mutationFn: () => authService.logout(),
     onError: (error) => {
@@ -22,5 +22,5 @@ export const useLogout = () => {
     },
   });
 
-  return { mutate };
+  return { logout };
 };

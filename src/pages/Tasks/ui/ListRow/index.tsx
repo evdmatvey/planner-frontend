@@ -44,12 +44,11 @@ export const ListRow = ({ group, tasks }: ListRowProps) => {
             {filteredTasks.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    <ListTask task={task} />
+                  <div ref={provided.innerRef} {...provided.draggableProps}>
+                    <ListTask
+                      task={task}
+                      dragHandleProps={provided.dragHandleProps}
+                    />
                   </div>
                 )}
               </Draggable>

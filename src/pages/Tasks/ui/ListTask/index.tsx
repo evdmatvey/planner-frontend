@@ -1,3 +1,4 @@
+import { DraggableProvidedDragHandleProps } from '@hello-pangea/dnd';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { Controller, useForm } from 'react-hook-form';
@@ -16,9 +17,10 @@ import styles from './ListTask.module.css';
 
 interface ListTaskProps {
   task: Task;
+  dragHandleProps: DraggableProvidedDragHandleProps | null;
 }
 
-export const ListTask = ({ task }: ListTaskProps) => {
+export const ListTask = ({ task, dragHandleProps }: ListTaskProps) => {
   const { deleteTask } = useDeleteTask();
   const classes = clsx(styles.root, {
     [styles.completed]: task.isCompleted,
@@ -39,7 +41,9 @@ export const ListTask = ({ task }: ListTaskProps) => {
 
   return (
     <div className={classes}>
-      <IconButton className={styles.move} icon={<MoveIcon />} />
+      <div {...dragHandleProps}>
+        <IconButton className={styles.move} icon={<MoveIcon />} />
+      </div>
       <div className={styles.content}>
         <div className={styles.cell}>
           <TransparentInput placeholder="Название" {...register('title')} />

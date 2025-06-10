@@ -1,0 +1,24 @@
+.root {
+  padding-top: 90px;
+  padding-bottom: 50px;
+}
+
+.wrapper {
+  max-width: 510px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--foreground);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}

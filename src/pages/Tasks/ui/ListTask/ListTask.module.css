@@ -33,3 +33,13 @@
 .move {
   cursor: grab;
 }
+
+@media screen and (max-width: 510px) {
+  .root {
+    width: 1070px;
+  }
+  .content {
+    width: 1000px;
+    grid-template-columns: repeat(6, calc(1000px / 6));
+  }
+}
