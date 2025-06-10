@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { m } from 'framer-motion';
 import { type ReactNode } from 'react';
 import { Outlet } from 'react-router';
+import { getVw } from '@/shared/lib/get-vw';
 import { DashboardMobileLayout } from '../DashboardMobileLayout';
 import styles from './DashboardLayout.module.css';
 
@@ -19,8 +20,6 @@ export const DashboardLayout = ({
   useSidebarStore,
 }: DashboardLayoutProps) => {
   const { isCollapsed } = useSidebarStore();
-  const getVw = () =>
-    Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
   const classes = clsx(styles.content, {
     [styles.full]: isCollapsed,
