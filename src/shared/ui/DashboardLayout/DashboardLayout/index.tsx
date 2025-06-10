@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { m } from 'framer-motion';
 import { type ReactNode } from 'react';
 import { Outlet } from 'react-router';
+import { brakepointsConfig } from '@/shared/config/brakepoints';
 import { getVw } from '@/shared/lib/get-vw';
 import { DashboardMobileLayout } from '../DashboardMobileLayout';
 import styles from './DashboardLayout.module.css';
@@ -27,7 +28,7 @@ export const DashboardLayout = ({
 
   return (
     <>
-      {getVw() >= 510 ? (
+      {getVw() >= brakepointsConfig.mobile ? (
         <div className={styles.root}>
           <div className={styles.sidebar}>{sidebarSlot}</div>
           <m.div
