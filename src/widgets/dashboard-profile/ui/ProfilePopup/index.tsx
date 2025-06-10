@@ -1,8 +1,7 @@
 import { AnimatePresence, m } from 'framer-motion';
 import { Link } from 'react-router';
+import { LogoutUser } from '@/features/logout-user';
 import { routesConfig } from '@/shared/config/routes';
-import { Button } from '@/shared/ui/Button';
-import { useLogout } from '../../model/useLogout';
 import styles from './ProfilePopup.module.css';
 
 interface ProfilePopupProps {
@@ -14,13 +13,6 @@ export const ProfilePopup = ({
   isOpen,
   closePopupHandler,
 }: ProfilePopupProps) => {
-  const { mutate: logout } = useLogout();
-
-  const logoutHandler = () => {
-    logout();
-    closePopupHandler();
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,14 +29,7 @@ export const ProfilePopup = ({
           >
             Личный кабинет
           </Link>
-          <Button
-            color="secondary"
-            variant="bordered"
-            size="small"
-            onClick={logoutHandler}
-          >
-            Выйти
-          </Button>
+          <LogoutUser size="small" onLogout={closePopupHandler} />
         </m.div>
       )}
     </AnimatePresence>
