@@ -1,4 +1,6 @@
 .root {
+  padding-bottom: 10px;
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
