@@ -1,0 +1,24 @@
+.drawer {
+  width: 300px;
+  padding: 30px 15px;
+  height: 100vh;
+  height: 100dvh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: var(--popup-background);
+  z-index: 1000;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+.close svg {
+  width: 30px;
+  height: 30px;
+}
