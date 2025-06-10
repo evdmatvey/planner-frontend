@@ -9,3 +9,11 @@
   flex-wrap: wrap;
   gap: 50px;
 }
+
+@media (width <=510px) {
+  .settings {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
