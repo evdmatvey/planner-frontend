@@ -1,0 +1,14 @@
+.content {
+  height: calc(100vh - 60px);
+  height: calc(100dvh - 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logout {
+  height: 44px;
+  margin-top: auto;
+  font-size: 20px;
+  font-weight: 500;
+}

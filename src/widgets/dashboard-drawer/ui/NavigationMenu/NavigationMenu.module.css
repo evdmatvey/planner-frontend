@@ -1,0 +1,31 @@
+.root ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  color: var(--color-gray-light);
+}
+
+.link svg {
+  width: 34px;
+  height: 34px;
+}
+
+.link svg path {
+  fill: var(--color-gray-light);
+}
+
+.link.active {
+  color: var(--text-light);
+}
+
+.link.active svg path {
+  fill: var(--text-light);
+}
