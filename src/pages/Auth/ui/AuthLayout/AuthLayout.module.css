@@ -45,3 +45,10 @@
     color: var(--color-accent-dark);
   }
 }
+
+@media screen and (max-width: 510px) {
+  .content {
+    padding: 20px;
+    max-width: 360px;
+  }
+}
