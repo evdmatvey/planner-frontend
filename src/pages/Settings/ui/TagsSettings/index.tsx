@@ -6,7 +6,6 @@ import { usePopup } from '@/shared/lib/usePopup';
 import { AnimatedPopup } from '@/shared/ui/AnimatedPopup';
 import { IconButton } from '@/shared/ui/IconButton';
 import { PlusIcon } from '@/shared/ui/icons/PlusIcon';
-import { SettingsItemTitle } from '../SettingsItemTitle';
 import { TagsSettingsItem } from './TagPopup';
 import styles from './TagsSettings.module.css';
 
@@ -18,7 +17,7 @@ export const TagsSettings = () => {
   return (
     <div className={styles.root}>
       <div className={styles.heading} ref={ref}>
-        <SettingsItemTitle text="Управление тегами" />
+        <h3>Ваши теги задач</h3>
         <IconButton onClick={togglePopupHandler} icon={<PlusIcon />} />
         <AnimatedPopup isOpen={isOpen} className={styles.create}>
           <CreateTagForm createCallback={togglePopupHandler} />

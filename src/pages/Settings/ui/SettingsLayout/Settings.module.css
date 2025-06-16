@@ -1,5 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .title {
-  margin-bottom: 20px;
   color: var(--text-light);
   font-size: 28px;
 }
@@ -15,5 +20,9 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+  }
+
+  .tabs {
+    margin: 0 auto;
   }
 }

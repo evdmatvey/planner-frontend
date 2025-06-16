@@ -4,7 +4,10 @@ import { Login } from '@/pages/Auth';
 import { Register } from '@/pages/Auth';
 import { Home } from '@/pages/Home';
 import { NotFound } from '@/pages/NotFound';
-import { Settings } from '@/pages/Settings';
+import { SettingsLayout } from '@/pages/Settings';
+import { NoSettings } from '@/pages/Settings/ui/NoSettings';
+import { SettingsProfile } from '@/pages/Settings/ui/SettingsProfile';
+import { SettingsTags } from '@/pages/Settings/ui/SettingsTags';
 import { Tasks } from '@/pages/Tasks';
 import { DashboardDrawer } from '@/widgets/dashboard-drawer';
 import { DashboardProfile } from '@/widgets/dashboard-profile';
@@ -55,7 +58,21 @@ export const router = createBrowserRouter([
       },
       {
         path: routesConfig.SETTINGS,
-        element: <Settings />,
+        element: <SettingsLayout />,
+        children: [
+          {
+            index: true,
+            element: <NoSettings />,
+          },
+          {
+            path: routesConfig.SETTINGS_PROFILE,
+            element: <SettingsProfile />,
+          },
+          {
+            path: routesConfig.SETTINGS_TAGS,
+            element: <SettingsTags />,
+          },
+        ],
       },
       {
         path: routesConfig.ANALYTICS,

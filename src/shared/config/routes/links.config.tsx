@@ -17,6 +17,6 @@ export const linksConfig = [
   {
     icon: <SettingsIcon />,
     text: 'Настройки',
-    to: routesConfig.SETTINGS,
+    to: routesConfig.SETTINGS_PROFILE,
   },
 ];

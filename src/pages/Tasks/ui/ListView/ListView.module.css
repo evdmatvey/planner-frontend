@@ -1,5 +1,5 @@
 .root {
-  height: 450px;
+  height: calc(100vh - 300px);
   padding-right: 5px;
   overflow-y: auto;
   display: flex;
