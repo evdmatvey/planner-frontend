@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./dist:/app/dist
+    env_file:
+      - ./.env
+    command: npm run build
