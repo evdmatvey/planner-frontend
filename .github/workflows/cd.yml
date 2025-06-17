@@ -20,4 +20,4 @@ jobs:
 
       - name: Run deploy script on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "bash -ic 'cd ~/planner/deploy/planner-frontend && ./deploy-frontend.sh'"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd ~/planner/deploy/ && ./deploy-frontend.sh"
