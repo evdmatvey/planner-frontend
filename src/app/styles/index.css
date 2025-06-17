@@ -83,3 +83,10 @@ a {
   --rdp-accent-color: #7f55d6;
   font-size: 85%;
 }
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
