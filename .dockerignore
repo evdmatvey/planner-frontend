@@ -25,9 +25,3 @@ pnpm-error.log
 Dockerfile
 README.md
 LICENSE
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-tsconfig.json
-tsconfig.dev.json
-tsconfig.build.json
